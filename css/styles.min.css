@@ -1036,3 +1036,11 @@ body.modal-open {
     transform: translateY(-50%);
     margin-left: 20px;
 }
+
+.responsive-qr {
+  display: block;
+  width: 50%;       /* Adjust this percentage as needed */
+  height: auto;     /* Keeps the QR code perfectly square */
+  max-width: 100%;  /* Prevents it from stretching larger than its original size */
+  margin: 0 auto;   /* Centers the image horizontally within its parent */
+}
