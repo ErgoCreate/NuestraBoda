@@ -1,0 +1,934 @@
+<!doctype html>
+<!--[if lt IE 7]>
+<html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if IE 7]>
+<html class="no-js lt-ie9 lt-ie8" lang="en"> <![endif]-->
+<!--[if IE 8]>
+<html class="no-js lt-ie9" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <title>Nos vamos a casar!</title>
+    <meta name="description" content="Queromos invitarte a nuestra boda.">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#ffffff">
+    <meta property="og:title" content="Karly y Miguel se van casar!">
+    <meta property="og:description" content="Queromos invitarte a nuestra boda.">
+    <!-- <meta property="og:image" content="https://wedding.ramswaroop.me/img/hero-min.jpg"> -->
+    <meta property="og:type" content="website">
+    <!-- <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png"> -->
+    <!-- <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png"> -->
+    <!-- <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png"> -->
+    <link rel="manifest" href="manifest.json">
+    <link rel="mask-icon" href="safari-pinned-tab.svg" color="#5bbad5">
+
+    <script>
+        // load css files from CDN if local node_modules fail
+        function loadCssFromCDN(css) {
+            // create new link tag
+            const link = document.createElement('link');
+            if (css === 'animate.css') {
+                link.href = 'https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css';
+            } else if (css === 'font-awesome.css') {
+                link.href = 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css';
+            }
+            link.rel = 'stylesheet';
+
+            // add link tag to head section
+            document.getElementsByTagName('head')[0].appendChild(link);
+        }
+
+        // load js files from CDN if local node_modules fail
+        function loadJsFromCDN(js) {
+            if (js === 'waypoints.js') {
+                document.write('<script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/jquery.waypoints.js"><\/script>');
+            } else if (js === 'jquery.js') {
+                document.write('<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"><\/script>');
+            }
+        }
+    </script>
+
+    <link rel="stylesheet" href="css/normalize.min.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/jquery.fancybox.css">
+    <link rel="stylesheet" href="css/flexslider.css">
+    <link rel="stylesheet" href="css/styles.min.css">
+    <link rel="stylesheet" href="css/queries.css">
+    <link rel="stylesheet" href="node_modules/animate.css/animate.min.css" onerror="loadCssFromCDN('animate.css')">
+    <link rel="stylesheet" href="node_modules/font-awesome/css/font-awesome.min.css" onerror="loadCssFromCDN('font-awesome.css')">
+    <script src="js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
+    <!-- ROMANTIC GOTH ENVELOPE OVERLAY (REFINED) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cinzel:wght@500;700&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Allura&family=Cinzel:wght@500;700&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Italianno&family=Cinzel:wght@500;700&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+
+<style>
+  /* Lock scroll while envelope is active */
+  body.envelope-active {
+    overflow: hidden !important;
+    height: 100vh !important;
+  }
+
+  /* Full-Screen Dark Overlay */
+  #envelope-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: #070607;
+    z-index: 999999;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: opacity 1s ease, visibility 1s ease;
+  }
+
+  #envelope-overlay.fade-out {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+  }
+
+  /* Envelope Main Container */
+  .goth-envelope-wrapper {
+    position: relative;
+    width: min(90vw, 560px);
+    height: min(56vh, 350px);
+    background-color: #0e0c0d;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.95);
+    cursor: pointer;
+    perspective: 1000px;
+    border: 1px solid #231b1e;
+  }
+
+  /* Crisp Victorian Damask Interior Liner */
+  .goth-envelope-liner {
+    position: absolute;
+    inset: 0;
+    background-color: #140e10;
+    background-image: radial-gradient(#2b161a 1px, transparent 1px);
+    background-size: 12px 12px;
+  }
+
+  /* --- MATHEMATICALLY CENTERED 4-FLAP STRUCTURE --- */
+  /* All flaps meet at exact center (50%, 50%) */
+  
+  /* Left Flap */
+  .env-flap-left {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50%;
+    height: 100%;
+    background-color: #120f10;
+    clip-path: polygon(0 0, 100% 50%, 0 100%);
+    z-index: 3;
+    border-right: 1px solid rgba(197, 160, 89, 0.2);
+  }
+
+  /* Right Flap */
+  .env-flap-right {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 50%;
+    height: 100%;
+    background-color: #120f10;
+    clip-path: polygon(100% 0, 0 50%, 100% 100%);
+    z-index: 3;
+    border-left: 1px solid rgba(197, 160, 89, 0.2);
+  }
+
+  /* Bottom Pocket Flap */
+  .env-flap-bottom {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 50%;
+    background-color: #151113;
+    clip-path: polygon(0 100%, 100% 100%, 50% 0);
+    z-index: 4;
+  }
+
+  /* Top Opening Flap */
+  .env-flap-top {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 50%;
+    background-color: #181315;
+    clip-path: polygon(0 0, 100% 0, 50% 100%);
+    transform-origin: top;
+    transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0.2s, z-index 0.1s ease 0.4s;
+    z-index: 5; /* Tops all flaps */
+  }
+
+  /* Sharp Gold Victorian Filigree Edge on Top Flap */
+  .top-flap-border {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+  }
+
+  /* --- INVITATION CARD (Centered when opened) --- */
+  .goth-letter {
+    position: absolute;
+    top: 5%;
+    left: 4%;
+    width: 92%;
+    height: 90%;
+    background: #171314;
+    border: 1px solid #c5a059;
+    box-sizing: border-box;
+    padding: 15px;
+    text-align: center;
+    color: #e0d0f0;
+    z-index: 2;
+    opacity: 0;
+    transition: transform 0.9s cubic-bezier(0.25, 1, 0.5, 1) 0.4s, opacity 0.3s ease 0.3s, z-index 0.1s ease 0.4s;
+    box-shadow: 0 0 25px rgba(0,0,0,0.9);
+  }
+
+  .goth-letter-inner {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    border: 1px solid rgba(197, 160, 89, 0.3);
+    padding: 15px 10px;
+  }
+
+  /* Elegant Calligraphy Names */
+  .goth-letter h3 {
+    text-transform: none !important; /* <--- ADD THIS LINE */
+    /*font-family: 'Alex Brush', cursive;*/
+    font-family: 'Allura', cursive;
+    color: #c5a059;
+    margin: 0;
+    font-size: min(8vw, 42px);
+    font-weight: normal;
+    line-height: 1.1;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.8);
+  }
+
+  .goth-letter h5 {
+    font-family: 'Cinzel', serif;
+    color: #d1c2d9;
+    font-size: min(3vw, 13px);
+    margin: 8px 0 4px 0;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+  }
+
+  .goth-letter p {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: min(4vw, 16px);
+    font-style: italic;
+    color: #b3a296;
+    margin: 4px 0;
+  }
+
+  /* --- WAX SEAL (Centered exactly over flap tips) --- */
+  .goth-wax-seal {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 86px;
+    height: 86px;
+    z-index: 6;
+    transition: opacity 0.4s ease, transform 0.5s ease;
+  }
+
+  /* Subtle Glowing Instruction */
+  .goth-instruction {
+    font-family: 'Cinzel', serif;
+    color: #c5a059;
+    margin-top: 35px;
+    font-size: min(3.5vw, 13px);
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    text-align: center;
+    transition: opacity 0.5s ease;
+    animation: gothGlow 2.5s infinite ease-in-out;
+  }
+
+  @keyframes gothGlow {
+    0%, 100% { opacity: 0.4; }
+    50% { opacity: 1; }
+  }
+
+  /* --- OPENING ANIMATION SEQUENCE --- */
+  .goth-envelope-wrapper.open .env-flap-top {
+    transform: rotateX(180deg);
+    z-index: 1;
+  }
+
+  .goth-envelope-wrapper.open .goth-wax-seal {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(1.5);
+  }
+
+  /* Card slides out and centers smoothly */
+  .goth-envelope-wrapper.open .goth-letter {
+    opacity: 1;
+    transform: translateY(-80px) scale(1.12);
+    z-index: 10;
+  }
+
+  @media (max-width: 480px) {
+    .goth-envelope-wrapper.open .goth-letter {
+      transform: translateY(-65px) scale(1.04);
+    }
+  }
+</style>
+</head>
+<body id="top">
+    <!-- ENVELOPE OVERLAY COMPONENT -->
+<div id="envelope-overlay">
+  <div class="goth-envelope-wrapper" id="gothEnvelope">
+    
+    <!-- Interior Liner -->
+    <div class="goth-envelope-liner"></div>
+
+    <!-- 4 Flaps Meeting Perfectly at (50%, 50%) -->
+    <div class="env-flap-left"></div>
+    <div class="env-flap-right"></div>
+    <div class="env-flap-bottom"></div>
+    <div class="env-flap-top">
+      <!-- Sharp Gold Filigree Edge Accent -->
+      <svg class="top-flap-border" viewBox="0 0 560 175" preserveAspectRatio="none">
+        <path d="M 0,0 L 280,175 L 560,0" fill="none" stroke="#c5a059" stroke-width="1.5" opacity="0.8"/>
+      </svg>
+    </div>
+    
+    <!-- CRISP 3D WAX SEAL (Centered over intersection) -->
+    <div class="goth-wax-seal">
+      <svg viewBox="0 0 200 200">
+        <defs>
+          <radialGradient id="waxGrad" cx="35%" cy="30%" r="70%">
+            <stop offset="0%" stop-color="#a81327" />
+            <stop offset="60%" stop-color="#5e030e" />
+            <stop offset="100%" stop-color="#240005" />
+          </radialGradient>
+          <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#fff2d1" />
+            <stop offset="50%" stop-color="#c5a059" />
+            <stop offset="100%" stop-color="#7a5c20" />
+          </linearGradient>
+        </defs>
+
+        <!-- Sharp Organic Wax Edge -->
+        <path d="M100,12 C128,9 152,22 170,38 C188,54 196,78 190,104 C184,130 192,154 174,174 C156,194 126,195 100,192 C74,189 48,196 28,178 C8,160 4,132 8,104 C12,76 16,48 38,28 C60,8 72,15 100,12 Z" fill="url(#waxGrad)" />
+
+        <!-- Crisp Inner Gold Rings -->
+        <circle cx="100" cy="100" r="66" fill="none" stroke="#2d0005" stroke-width="4" opacity="0.8" />
+        <circle cx="100" cy="100" r="62" fill="none" stroke="url(#goldGrad)" stroke-width="1.5" />
+        <circle cx="100" cy="100" r="54" fill="none" stroke="url(#goldGrad)" stroke-dasharray="2, 3" stroke-width="1" />
+
+        <!-- Roman Monogram Font for Wax Stamp -->
+        <text x="100" y="112" font-family="'Cinzel', serif" font-weight="700" font-size="28" fill="url(#goldGrad)" text-anchor="middle" letter-spacing="2">K & M</text>
+      </svg>
+    </div>
+
+    <!-- THE INVITATION CARD -->
+    <div class="goth-letter">
+      <div class="goth-letter-inner">
+        
+        <!-- Victorian Corner Filigree SVG -->
+        <svg style="position: absolute; top:4px; left:4px; width:20px; height:20px; fill:#c5a059;" viewBox="0 0 24 24"><path d="M2,2 L10,2 L10,3.5 L3.5,3.5 L3.5,10 L2,10 Z"/></svg>
+        <svg style="position: absolute; top:4px; right:4px; width:20px; height:20px; fill:#c5a059; transform:rotate(90deg);" viewBox="0 0 24 24"><path d="M2,2 L10,2 L10,3.5 L3.5,3.5 L3.5,10 L2,10 Z"/></svg>
+        <svg style="position: absolute; bottom:4px; left:4px; width:20px; height:20px; fill:#c5a059; transform:rotate(-90deg);" viewBox="0 0 24 24"><path d="M2,2 L10,2 L10,3.5 L3.5,3.5 L3.5,10 L2,10 Z"/></svg>
+        <svg style="position: absolute; bottom:4px; right:4px; width:20px; height:20px; fill:#c5a059; transform:rotate(180deg);" viewBox="0 0 24 24"><path d="M2,2 L10,2 L10,3.5 L3.5,3.5 L3.5,10 L2,10 Z"/></svg>
+
+        <!-- Andalucia-style Calligraphy Names -->
+        <h3>Karly & Miguel</h3>
+        
+        <h5>Nos Vamos a Casar</h5>
+        
+        <!-- Divider Line -->
+        <svg width="100" height="10" viewBox="0 0 100 10" fill="none">
+          <path d="M0,5 L40,5 L50,1 L60,5 L100,5" stroke="#c5a059" stroke-width="1"/>
+          <circle cx="50" cy="5" r="2" fill="#c5a059"/>
+        </svg>
+
+        <p>Acompáñanos a celebrar nuestra boda</p>
+        <p style="font-family: 'Cinzel', serif; font-size: 13px; color: #c5a059; margin-top: 6px; font-style: normal; letter-spacing: 3px;">13 . 02 . 2027</p>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Instruction Text -->
+  <div class="goth-instruction" id="gothInstruction">Presiona el sello para abrir</div>
+</div>
+<!--[if lt IE 8]>
+<p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade
+    your browser</a> to improve your experience.</p>
+<![endif]-->
+<section class="hero">
+    <section class="navigation">
+        <header>
+            <div class="header-content">
+                <div class="logo"><a href="#"><img src="img/logo.png" alt="Logo"></a></div>
+                <div class="header-nav">
+                    <nav>
+                        <ul class="primary-nav">
+                            <li><a href="#intro">Nuestra historia de amor</a></li>
+                            <li><a href="#events">Eventos</a></li>
+                            <li><a href="#album">Album</a></li>
+                            <li><a href="#eng-pics">Compromiso</a></li>
+                            <li class="hidden-sm hidden-xs"><a href="#video-bg">Lugar</a></li>
+                        </ul>
+                        <ul class="member-actions">
+                            <li><a href="#map" class="login">Salon de fiestas</a></li>
+                            <li><a href="#rsvp" class="btn-white btn-small">RSVP</a></li>
+                        </ul>
+                    </nav>
+                </div>
+                <div class="navicon">
+                    <a class="nav-toggle" href="#"><span></span></a>
+                </div>
+            </div>
+        </header>
+    </section>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-10 col-md-offset-1">
+                <div class="hero-content text-center">
+                    <!--<h1>Karly y Miguel</h1>-->
+                    <img src="img/logo-lg.png">
+                    <!--<p class="intro">Karly y Miguel are getting hitched!</p>-->
+                    <!--<a href="#" class="btn btn-fill btn-large btn-margin-right">Scroll Down</a> -->
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-4 hidden-xs"></div>
+            <div class="col-sm-4 hidden-xs text-center"><a href="#rsvp"
+                                                           class="btn btn-accent btn-large rsvp-btn">RSVP</a></div>
+            <div class="col-sm-4 hidden-xs"></div>
+        </div>
+    </div>
+    <div class="down-arrow floating-arrow"><a href="#invitation"><i class="fa fa-angle-down"></i></a></div>
+</section>
+
+<section id="invitation" class="section-padding">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <h3>¡Nos vamos a casar!</h3>
+                <p>¡La fecha es 13 de Febrero de 2027 y queremos que seas parte de nuestra boda!</p>
+                <!-- <div class="share-bar"></div> -->
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="intro">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <h3 class="header">Nuestra historia de amor</h3>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3 hidden-sm hidden-xs"><img src="img/left.png" class="wp1"></div>
+            <div class="col-md-6">
+                <p>
+                    La fecha es 2022, durante la pandemia. En ese tiempo era muy difícil socializar con gente fuera de tu círculo de conocidos, y pues por azares del destino que está de más explicar, hicimos match en Tinder. Nuestra primera cita iba a ser la típica cita en un café, pero al encontrarnos y hablar un poco, teníamos hambre así que fuimos a comer comida china. Hasta ahí todo normal, y cuando ya me iba a despedir, Karly propuso que fueramos a jugar billar. Yo nunca había jugado, pero quería aprender y Karly dijo que me enseñaría. Obviamente ella no tuvo piedad y ganó todos los juegos. No fue para nada una primera cita convencional, pero nos divertimos mucho. A la siguiente semana la invité a salir una vez más, después de todo la humillación que sufrí en el billar no se podía quedar así.</p>
+
+                    <p> Mientras más nos conocíamos, terminamos encontrando el amor después de conectar de una manera única. El resto es historia y aquí estámos, organizando la boda. </p> <p> <svg width="32" height="32" viewBox="0 0 24 24" fill="red">
+  <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+</svg>
+                </p>
+            </div>
+            <div class="col-md-3 hidden-sm hidden-xs"><img src="img/right.png" class="wp2"></div>
+        </div>
+        <div class="row">
+            <div class="col-sm-4 col-sm-push-2 col-xs-6 hidden-md hidden-lg"><img src="img/left.png" class="wp8"></div>
+            <div class="col-sm-4 col-sm-push-2 col-xs-6 hidden-md hidden-lg"><img src="img/right.png" class="wp9"></div>
+        </div>
+    </div>
+</section>
+
+<section class="events section-padding" id="events">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h3 class="header">Eventos</h3>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6 col-sm-12 col-xs-12 leftcol">
+                <div class="wp3">
+                    <p><strong>13 de Febrero</strong></p>
+
+                    <h5>Ceremonia <span class="time">1PM - 3PM</span></h5>
+                    <p>Agregar texto</p>
+                </div>
+                <div class="wp5">
+                    <h5>Entrada <span class="time">4PM - 5PM</span></h5>
+                    <p>Agrgar texto</p>
+                </div>
+                <div class="wp5">
+                    <h5>Brindis <span class="time">4PM - 5PM</span></h5>
+                    <p>Agrgar texto</p>
+                </div>
+                <div class="wp5">
+                    <h5>Comida <span class="time">4PM - 5PM</span></h5>
+                    <p>Agrgar texto</p>
+                </div>
+            </div>
+            <div class="col-md-6 col-sm-12 col-xs-12 rightcol">
+                <!-- <p><strong>28th November</strong></p> -->
+                <div class="wp6">
+                    <h5>¡A Bailar! <span class="time">7PM-12AM</span></h5>
+                    <p>Agregar texto</p>
+                </div>
+                <div class="wp5">
+                    <h5>Pastel <span class="time">4PM - 5PM</span></h5>
+                    <p>Agrgar texto</p>
+                </div>
+                
+                <!-- <div class="wp4">
+                    <h5>Hora de karaoke <span class="time">6PM-7PM</span></h5>
+                    <p>Agregar texto</p>
+                </div> -->
+                <div class="wp6">
+                    <h5>Música en vivo <span class="time">7PM-12AM</span></h5>
+                    <p>Agregar texto</p>
+                </div>
+            </div>
+        </div>
+        <div class="row section-padding">
+            <div class="col-md-4 col-md-offset-4 text-center">
+                <a class="btn btn-accent btn-small" data-toggle="modal" data-target="#dc-modal">
+                    <i class="fa fa-barcode"></i>&nbsp;&nbsp;Código de vestimenta
+                </a>
+            </div>
+        </div>
+        <!--<div class="row">
+            <div class="col-xs-12 section-border section-padding">
+            </div>
+        </div>-->
+    </div>
+
+<!-- Dress Code Section – Gothic Elegance -->
+<section id="dress-code" class="section-padding">
+    <div class="container">
+
+        <!-- Fila 1: Introducción y código general -->
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2 text-center">
+                <h3 class="section-padding">Código de vestimenta</h3>
+                <h5>Boda y Recepción <span class="time">3PM - 11:59PM</span></h5>
+                <p>
+                    <strong>Atuendo gótico elegante</strong><br>
+                    Para celebrar este evento principal, te invitamos a vestir con tu mejor estilo gótico. Los colores oscuros como negro, burdeos, morado profundo, verde esmeralda o gris carbón son más que bienvenidos.
+                </p>
+            </div>
+        </div>
+
+        <!-- Fila 2: Dos columnas con imágenes y descripciones -->
+        <div class="row" style="margin-top: 30px;">
+            
+            <!-- Columna ELLAS -->
+            <div class="col-sm-6 text-center">
+                <div class="gothic-card">
+                    <h4 style="margin-top: 20px; color: #e0d0f0;">Ellas</h4>
+                    <img src="img/ellas.png" 
+                         alt="Estilo gótico femenino" 
+                         class="img-responsive img-placeholder">
+                    <p style="text-align: left; padding: 0 15px;">
+                        Pueden usar vestidos largos negros o de tonos oscuros, encajes, terciopelo, corsets elegantes, estilo romántico, o faldas voluminosas.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Columna ELLOS -->
+            <div class="col-sm-6 text-center">
+                <div class="gothic-card">
+                    <h4 style="margin-top: 20px; color: #e0d0f0;">Ellos</h4>
+                    <img src="img/ellos.png" 
+                         alt="Estilo gótico masculino" 
+                         class="img-responsive img-placeholder">
+                    <p style="text-align: left; padding: 0 15px;">
+                        Pueden optar por trajes negros o gris oscuro, camisas de cuello alto, chalecos de terciopelo, sacos largos o detalles de encaje en la solapa. También se aceptan gabardinas o toques románticos y lúgubres.
+                    </p>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Fila 3: Cierre / Idea principal (fuera de las columnas) -->
+        <div class="row" style="margin-top: 50px;">
+            <div class="col-md-8 col-md-offset-2 text-center">
+                <p style="font-size: 17px; font-weight: 300; border-top: 1px solid #2b2538; padding-top: 40px;">
+                    La idea es lograr un look sofisticado, sombrío y elegante. Sentirse parte de una noche mágica y romántica es lo más importante.
+                </p>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+</section>
+
+<section id="album" class="section-padding">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <h3>¡Una imagen vale mil palabras!</h3>
+                <p>¡Ayúdanos a capturar cada momento de nuestra celebración subiendo tus fotos y videos a nuestro album!
+                    <a href="https://photos.app.goo.gl/bQTaFTxZ2yPd3ySC9" target="_blank">Nuestra boda: Karly y Miguel</a>
+                </p>
+            </div>
+        </div>
+        <div class="row section-border wp7">
+            <!-- <div style="width: 500px; height: 500px; display: flex; justify-content: center; align-items: center;"> -->
+              <img src="img/qr.png" class="responsive-qr">
+            <!-- </div> -->
+        </div>
+    </div>
+</section>
+
+<section id="eng-pics" class="section-padding">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <h3 class="header"></h3>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-2">
+                <a class="fancybox" rel="group" href="img/eng_pics/0.jpg">
+                    <div class="img-wrap">
+                        <div class="overlay">
+                            <i class="fa fa-search"></i>
+                        </div>
+                        <img src="img/eng_pics/0.jpg" alt=""/>
+                    </div>
+                </a>
+            </div>
+            <div class="col-md-2">
+                <a class="fancybox" rel="group" href="img/eng_pics/8.png">
+                    <div class="img-wrap">
+                        <div class="overlay">
+                            <i class="fa fa-search"></i>
+                        </div>
+                        <img src="img/eng_pics/8.png" alt=""/>
+                    </div>
+                </a>
+            </div>
+            <div class="col-md-2">
+                <a class="fancybox" rel="group" href="img/eng_pics/2.png">
+                    <div class="img-wrap">
+                        <div class="overlay">
+                            <i class="fa fa-search"></i>
+                        </div>
+                        <img src="img/eng_pics/2.png" alt=""/>
+                    </div>
+                </a>
+            </div>
+            <div class="col-md-2">
+                <a class="fancybox" rel="group" href="img/eng_pics/5.png">
+                    <div class="img-wrap">
+                        <div class="overlay">
+                            <i class="fa fa-search"></i>
+                        </div>
+                        <img src="img/eng_pics/5.png" alt=""/>
+                    </div>
+                </a>
+            </div>
+            <div class="col-md-2">
+                <a class="fancybox" rel="group" href="img/eng_pics/4.jpg">
+                    <div class="img-wrap">
+                        <div class="overlay">
+                            <i class="fa fa-search"></i>
+                        </div>
+                        <img src="img/eng_pics/4.jpg" alt=""/>
+                    </div>
+                </a>
+            </div>
+            <div class="col-md-2">
+                <a class="fancybox" rel="group" href="img/eng_pics/9.png">
+                    <div class="img-wrap">
+                        <div class="overlay">
+                            <i class="fa fa-search"></i>
+                        </div>
+                        <img src="img/eng_pics/9.png" alt=""/>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row hidden-lg hidden-md hidden-xs">
+            <div class="col-xs-12 section-border section-padding"></div>
+        </div>
+    </div>
+    <!--<div class="row">
+        <div class="col-md-12">
+            <div class="diamond floating-logo">
+                <img src="img/sketch-logo.png" alt="Sketch Logo">
+                <div class="ring"></div>
+            </div>
+        </div>
+    </div>-->
+</section>
+
+<section id="video-bg" class="hidden-sm hidden-xs">
+    <!-- <div id="bgndVideo" class="player"
+         data-property="{videoURL:'https://youtu.be/9giqL1H6yRs',containment:'#video-bg',autoPlay:true, mute:true, showControls:false, startAt:80, stopAt:259, opacity:1}">
+    </div> -->
+    <div id="video2-content">
+        <h5>Los Pilares Salón & Jardín</h5>
+        <p>Salamanca</p>
+    </div>
+</section>
+
+<section id="map" class="section-padding">
+    <div class="text-center">
+        <h3>¿Cómo llegar?</h3>
+        <!-- <p>It's way easier than you think!</p> -->
+    </div>
+    <div style="width: 100%"><iframe width="100%" height="600" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" style="border:0" allowfullscreen="" src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBVizdQeh3udy11xDc5Ao2YStR2gLc-rfc&amp;q=Rio%20Ganges%2C%20107%2C%20San%20Jacinto%2C%2036710%20Salamanca%2C%20Gto.%2C%20Mexico&amp;maptype=roadmap&amp;zoom=14"><a href="https://www.maps.ie/create-google-map/">Embed Google Street View map</a></iframe></div>
+    <!-- <div id="map-content-wrapper" class="container pointer-events-none">
+        <div class="row">
+            
+            <div class="col-xs-offset-1 col-xs-10 col-md-offset-3 col-md-6">
+                <div class="text-center">
+                    <div id="btn-show-content" class="toggle-map-content pointer-events-auto">
+                        <i class="fa fa-info-circle"></i>&nbsp;&nbsp; Show info
+                    </div>
+                </div>
+                <div id="map-content" class="pointer-events-auto">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h5>ITC Fortune Park</h5>
+                            <p>Kona Expressway, Howrah, West Bengal 711403, India</p>
+                        </div>
+                        <div class="col-md-6">
+                            <h5>Mr. Amit Roy</h5>
+                            <p><i class="fa fa-mobile"></i> <a href="tel://+919412345678">+91 9412345678</a><br>
+                                <i class="fa fa-mobile"></i> <a href="tel://+917123456789">+91 7123456789</a></p>
+                        </div>
+                    </div>
+                    <div class="row text-center">
+                        <div class="col-md-6" style="padding: 5px;">
+                            <a class="btn btn-fill btn-small"
+                               href="https://m.uber.com/ul/?action=setPickup&client_id=Yh7Dl6SjB56RY2JuuZF8ttVa6ryFV78W&pickup=my_location&dropoff[formatted_address]=Fortune%20Park%20Panchwati%20-%20Hotels%20in%20Kolkata%2C%20Howrah%2C%20West%20Bengal%2C%20India&dropoff[latitude]=22.593276&dropoff[longitude]=88.270277"><i
+                                    class="fa fa-taxi"></i>&nbsp;&nbsp;Book Uber</a>
+                        </div>
+                        <div class="col-md-6" style="padding: 5px;">
+                            <a class="btn btn-accent btn-small" id="btn-show-map"><i class="fa fa-map-marker"></i>&nbsp;&nbsp;Show
+                                map</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> -->
+</section>
+
+<section class="rsvp text-center" id="rsvp">
+
+    <div id="rsvp-modal" class="modal fade" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span>&times;</span>
+                    </button>
+                    <div class="section-padding">
+                        <h3>¡Acompáñanos!</h3>
+                        <!-- <p>Solo nos falta tu asistencia</p> -->
+                        <div id="add-to-cal"></div>
+                    </div>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 col-md-offset-3">
+                <h3>¿Qué esperas?</h3>
+                <p>Apreciariamos que confirmes tu asistencia antes del 30 de Noviembre de 2026</p>
+                <form id="rsvp-form" class="rsvp-form" action="" method="POST">
+                    
+                    <!-- Fila 1: Nombre + Correo -->
+                    <div class="row">
+                        <div class="col-md-6 col-sm-6">
+                            <div class="form-input-group">
+                                <i class="fa fa-user"></i>
+                                <input type="text" name="name" class="" placeholder="Nombre" required>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-sm-6">
+                            <div class="form-input-group">
+                                <i class="fa fa-envelope"></i>
+                                <input type="email" name="email" class="" placeholder="Correo electrónico" required>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Fila 2: Teléfono + Acompañantes -->
+                    <div class="row">
+                        <div class="col-md-6 col-sm-6">
+                            <div class="form-input-group">
+                                <i class="fa fa-phone"></i>
+                                <input type="tel" name="phone" class="" placeholder="Teléfono / Celular" required>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-sm-6">
+                            <div class="form-input-group">
+                                <i class="fa fa-users"></i>
+                                <input type="number" id="extrasField" name="extras" class="" min="0" max="4" placeholder="Número de acompañantes" required>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Fila 3: Código de invitación (ocupa la mitad izquierda, la derecha queda libre o puedes usarla para otro campo) -->
+                    <div class="row">
+                        <div class="col-md-6 col-sm-6">
+                            <div class="form-input-group">
+                                <i class="fa fa-key"></i>
+                                <input type="number" name="invite_code" id="invite_code" class="" min="0" placeholder="Invite code" required>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-sm-6">
+                            <!-- Espacio disponible si quisieras agregar algo más después -->
+                        </div>
+                    </div>
+
+                    <!-- Fila 4: Alertas / mensajes -->
+                    <div class="row">
+                        <div class="col-md-12" id="alert-wrapper"></div>
+                    </div>
+
+                    <!-- Botón -->
+                    <button class="btn-fill rsvp-btn">
+                        Aceptar invitación
+                    </button>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12 text-center content">
+                <span class="to-top-wrapper"><a href="#top" class="to-top"><i class="fa fa-angle-up"></i></a></span>
+                <p>Creado con <span class="fa fa-heart pulse2"></span></p>
+            </div>
+        </div>
+    </div>
+</footer>
+<script src="js/vendor/jquery-1.11.2.min.js" onerror="loadJsFromCDN('jquery.js')"></script>
+<script src="node_modules/waypoints/lib/jquery.waypoints.min.js" onerror="loadJsFromCDN('waypoints.js')"></script>
+<script src="js/jquery.fancybox.pack.js"></script>
+<script src="js/vendor/bootstrap.min.js"></script>
+<script src="js/jquery.flexslider-min.js"></script>
+<script src="js/jquery.mb.YTPlayer.min.js"></script>
+<script src="js/vendor/ouical.js"></script>
+<script src="js/scripts.min.js"></script>
+<!-- <script>
+        // 2. Wait for the DOM content to fully load
+        window.addEventListener('DOMContentLoaded', () => {
+            
+            // 3. Get the raw query string from the browser window URL
+            const queryString = window.location.search;
+            
+            // 4. Parse the query parameters using URLSearchParams
+            const urlParams = new URLSearchParams(queryString);
+            
+            // 5. Extract the specific parameter value by its key name
+            const usernameValue = urlParams.get('extras');
+            
+            // 6. If the parameter exists in the URL, inject it into the input field
+            if (usernameValue !== null) {
+                document.getElementById('extrasField').value = usernameValue;
+            } else {
+                inputField.value = ''; // Your default value goes here
+            }
+        });
+    </script> -->
+<script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBlPw3GQYI3faa_9mRE6plWuM7xNEmrwH0&callback=initMap"></script>
+<!-- Google Analytics -->
+<!-- <script>
+    (function (i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r;
+        i[r] = i[r] || function () {
+            (i[r].q = i[r].q || []).push(arguments)
+        }, i[r].l = 1 * new Date();
+        a = s.createElement(o),
+            m = s.getElementsByTagName(o)[0];
+        a.async = 1;
+        a.src = g;
+        m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+    ga('create', 'UA-46465113-4', 'auto');
+    ga('send', 'pageview');
+</script> -->
+<script>
+  // Lock scroll immediately on load
+  document.body.classList.add('envelope-active');
+
+  $(document).ready(function() {
+    var isOpened = false;
+
+    function openEnvelope() {
+      if (isOpened) return;
+      isOpened = true;
+
+      // 1. Open envelope animation
+      $('#gothEnvelope').addClass('open');
+      
+      // 2. Hide instruction text quietly
+      $('#gothInstruction').css('opacity', '0');
+
+      // 3. Allow guest to tap anywhere to dismiss immediately
+      $('#envelope-overlay').one('click touchstart', function() {
+        dismissOverlay();
+      });
+
+      // 4. Auto-dismiss after 4.5 seconds
+      setTimeout(function() {
+        dismissOverlay();
+      }, 4500);
+    }
+
+    function dismissOverlay() {
+      $('#envelope-overlay').addClass('fade-out');
+      $('body').removeClass('envelope-active');
+    }
+
+    // Trigger on tap/click
+    $('#gothEnvelope').on('click touchstart', function(e) {
+      e.stopPropagation();
+      openEnvelope();
+    });
+  });
+</script>
+</body>
+</html>

@@ -59,8 +59,310 @@
     <link rel="stylesheet" href="node_modules/animate.css/animate.min.css" onerror="loadCssFromCDN('animate.css')">
     <link rel="stylesheet" href="node_modules/font-awesome/css/font-awesome.min.css" onerror="loadCssFromCDN('font-awesome.css')">
     <script src="js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
+    <!-- ROMANTIC GOTH ENVELOPE OVERLAY (REFINED) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cinzel:wght@500;700&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Allura&family=Cinzel:wght@500;700&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Italianno&family=Cinzel:wght@500;700&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+
+<style>
+  /* Lock scroll while envelope is active */
+  body.envelope-active {
+    overflow: hidden !important;
+    height: 100vh !important;
+  }
+
+  /* Full-Screen Dark Overlay */
+  #envelope-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: #070607;
+    z-index: 999999;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: opacity 1s ease, visibility 1s ease;
+  }
+
+  #envelope-overlay.fade-out {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+  }
+
+  /* Envelope Main Container */
+  .goth-envelope-wrapper {
+    position: relative;
+    width: min(90vw, 560px);
+    height: min(56vh, 350px);
+    background-color: #0e0c0d;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.95);
+    cursor: pointer;
+    perspective: 1000px;
+    border: 1px solid #231b1e;
+  }
+
+  /* Crisp Victorian Damask Interior Liner */
+  .goth-envelope-liner {
+    position: absolute;
+    inset: 0;
+    background-color: #140e10;
+    background-image: radial-gradient(#2b161a 1px, transparent 1px);
+    background-size: 12px 12px;
+  }
+
+  /* --- MATHEMATICALLY CENTERED 4-FLAP STRUCTURE --- */
+  /* All flaps meet at exact center (50%, 50%) */
+  
+  /* Left Flap */
+  .env-flap-left {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50%;
+    height: 100%;
+    background-color: #120f10;
+    clip-path: polygon(0 0, 100% 50%, 0 100%);
+    z-index: 3;
+    border-right: 1px solid rgba(197, 160, 89, 0.2);
+  }
+
+  /* Right Flap */
+  .env-flap-right {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 50%;
+    height: 100%;
+    background-color: #120f10;
+    clip-path: polygon(100% 0, 0 50%, 100% 100%);
+    z-index: 3;
+    border-left: 1px solid rgba(197, 160, 89, 0.2);
+  }
+
+  /* Bottom Pocket Flap */
+  .env-flap-bottom {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 50%;
+    background-color: #151113;
+    clip-path: polygon(0 100%, 100% 100%, 50% 0);
+    z-index: 4;
+  }
+
+  /* Top Opening Flap */
+  .env-flap-top {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 50%;
+    background-color: #181315;
+    clip-path: polygon(0 0, 100% 0, 50% 100%);
+    transform-origin: top;
+    transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0.2s, z-index 0.1s ease 0.4s;
+    z-index: 5; /* Tops all flaps */
+  }
+
+  /* Sharp Gold Victorian Filigree Edge on Top Flap */
+  .top-flap-border {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+  }
+
+  /* --- INVITATION CARD (Centered when opened) --- */
+  .goth-letter {
+    position: absolute;
+    top: 5%;
+    left: 4%;
+    width: 92%;
+    height: 90%;
+    background: #171314;
+    border: 1px solid #c5a059;
+    box-sizing: border-box;
+    padding: 15px;
+    text-align: center;
+    color: #e0d0f0;
+    z-index: 2;
+    opacity: 0;
+    transition: transform 0.9s cubic-bezier(0.25, 1, 0.5, 1) 0.4s, opacity 0.3s ease 0.3s, z-index 0.1s ease 0.4s;
+    box-shadow: 0 0 25px rgba(0,0,0,0.9);
+  }
+
+  .goth-letter-inner {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    border: 1px solid rgba(197, 160, 89, 0.3);
+    padding: 15px 10px;
+  }
+
+  /* Elegant Calligraphy Names */
+  .goth-letter h3 {
+    text-transform: none !important; /* <--- ADD THIS LINE */
+    /*font-family: 'Alex Brush', cursive;*/
+    font-family: 'Allura', cursive;
+    color: #c5a059;
+    margin: 0;
+    font-size: min(8vw, 42px);
+    font-weight: normal;
+    line-height: 1.1;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.8);
+  }
+
+  .goth-letter h5 {
+    font-family: 'Cinzel', serif;
+    color: #d1c2d9;
+    font-size: min(3vw, 13px);
+    margin: 8px 0 4px 0;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+  }
+
+  .goth-letter p {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: min(4vw, 16px);
+    font-style: italic;
+    color: #b3a296;
+    margin: 4px 0;
+  }
+
+  /* --- WAX SEAL (Centered exactly over flap tips) --- */
+  .goth-wax-seal {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 86px;
+    height: 86px;
+    z-index: 6;
+    transition: opacity 0.4s ease, transform 0.5s ease;
+  }
+
+  /* Subtle Glowing Instruction */
+  .goth-instruction {
+    font-family: 'Cinzel', serif;
+    color: #c5a059;
+    margin-top: 35px;
+    font-size: min(3.5vw, 13px);
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    text-align: center;
+    transition: opacity 0.5s ease;
+    animation: gothGlow 2.5s infinite ease-in-out;
+  }
+
+  @keyframes gothGlow {
+    0%, 100% { opacity: 0.4; }
+    50% { opacity: 1; }
+  }
+
+  /* --- OPENING ANIMATION SEQUENCE --- */
+  .goth-envelope-wrapper.open .env-flap-top {
+    transform: rotateX(180deg);
+    z-index: 1;
+  }
+
+  .goth-envelope-wrapper.open .goth-wax-seal {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(1.5);
+  }
+
+  /* Card slides out and centers smoothly */
+  .goth-envelope-wrapper.open .goth-letter {
+    opacity: 1;
+    transform: translateY(-80px) scale(1.12);
+    z-index: 10;
+  }
+
+  @media (max-width: 480px) {
+    .goth-envelope-wrapper.open .goth-letter {
+      transform: translateY(-65px) scale(1.04);
+    }
+  }
+</style>
 </head>
 <body id="top">
+    <!-- ENVELOPE OVERLAY COMPONENT -->
+<div id="envelope-overlay">
+  <div class="goth-envelope-wrapper" id="gothEnvelope">
+    
+    <!-- Interior Liner -->
+    <div class="goth-envelope-liner"></div>
+
+    <!-- 4 Flaps Meeting Perfectly at (50%, 50%) -->
+    <div class="env-flap-left"></div>
+    <div class="env-flap-right"></div>
+    <div class="env-flap-bottom"></div>
+    <div class="env-flap-top">
+      <!-- Sharp Gold Filigree Edge Accent -->
+      <svg class="top-flap-border" viewBox="0 0 560 175" preserveAspectRatio="none">
+        <path d="M 0,0 L 280,175 L 560,0" fill="none" stroke="#c5a059" stroke-width="1.5" opacity="0.8"/>
+      </svg>
+    </div>
+    
+    <!-- CRISP 3D WAX SEAL (Centered over intersection) -->
+    <div class="goth-wax-seal">
+      <svg viewBox="0 0 200 200">
+  <!-- keep the wax gradient, shape, etc. -->
+  <!-- <path d="M100,12 C128,9 ... Z" fill="url(#waxGrad)" /> -->
+  
+  <!-- your image stamped on top -->
+  <image href="img/seal.png" x="0" y="0" width="200" height="200" clip-path="inset(0 round 50%)" />
+  
+  <!-- optional gold rings over the image -->
+  <!-- <circle cx="100" cy="100" r="66" fill="none" stroke="#2d0005" stroke-width="4" opacity="0.8" /> -->
+  <!-- <circle cx="100" cy="100" r="62" fill="none" stroke="url(#goldGrad)" stroke-width="1.5" /> -->
+</svg>
+    </div>
+
+    <!-- THE INVITATION CARD -->
+    <div class="goth-letter">
+      <div class="goth-letter-inner">
+        
+        <!-- Victorian Corner Filigree SVG -->
+        <svg style="position: absolute; top:4px; left:4px; width:20px; height:20px; fill:#c5a059;" viewBox="0 0 24 24"><path d="M2,2 L10,2 L10,3.5 L3.5,3.5 L3.5,10 L2,10 Z"/></svg>
+        <svg style="position: absolute; top:4px; right:4px; width:20px; height:20px; fill:#c5a059; transform:rotate(90deg);" viewBox="0 0 24 24"><path d="M2,2 L10,2 L10,3.5 L3.5,3.5 L3.5,10 L2,10 Z"/></svg>
+        <svg style="position: absolute; bottom:4px; left:4px; width:20px; height:20px; fill:#c5a059; transform:rotate(-90deg);" viewBox="0 0 24 24"><path d="M2,2 L10,2 L10,3.5 L3.5,3.5 L3.5,10 L2,10 Z"/></svg>
+        <svg style="position: absolute; bottom:4px; right:4px; width:20px; height:20px; fill:#c5a059; transform:rotate(180deg);" viewBox="0 0 24 24"><path d="M2,2 L10,2 L10,3.5 L3.5,3.5 L3.5,10 L2,10 Z"/></svg>
+
+        <!-- Andalucia-style Calligraphy Names -->
+        <h3>Karly & Miguel</h3>
+        
+        <h5>Nos Vamos a Casar</h5>
+        
+        <!-- Divider Line -->
+        <svg width="100" height="10" viewBox="0 0 100 10" fill="none">
+          <path d="M0,5 L40,5 L50,1 L60,5 L100,5" stroke="#c5a059" stroke-width="1"/>
+          <circle cx="50" cy="5" r="2" fill="#c5a059"/>
+        </svg>
+
+        <p>Acompáñanos a celebrar nuestra boda</p>
+        <p style="font-family: 'Cinzel', serif; font-size: 13px; color: #c5a059; margin-top: 6px; font-style: normal; letter-spacing: 3px;">13 . 02 . 2027</p>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Instruction Text -->
+  <div class="goth-instruction" id="gothInstruction">Presiona el sello para abrir</div>
+</div>
 <!--[if lt IE 8]>
 <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade
     your browser</a> to improve your experience.</p>
@@ -74,14 +376,15 @@
                     <nav>
                         <ul class="primary-nav">
                             <li><a href="#intro">Nuestra historia de amor</a></li>
-                            <li><a href="#events">Eventos</a></li>
+                            <li><a href="#events">Día del evento</a></li>
+                            <li><a href="#dress-code">Código de vestimenta</a></li>
                             <li><a href="#album">Album</a></li>
                             <li><a href="#eng-pics">Compromiso</a></li>
                             <li class="hidden-sm hidden-xs"><a href="#video-bg">Lugar</a></li>
                         </ul>
                         <ul class="member-actions">
-                            <li><a href="#map" class="login">Salon de fiestas</a></li>
-                            <li><a href="#rsvp" class="btn-white btn-small">RSVP</a></li>
+                            <li><a href="#gifts" class="login">Regalos</a></li>
+                            <li><a href="#rsvp" class="btn-white btn-small">Confirmar asistencia</a></li>
                         </ul>
                     </nav>
                 </div>
@@ -117,7 +420,7 @@
         <div class="row">
             <div class="col-md-12 text-center">
                 <h3>¡Nos vamos a casar!</h3>
-                <p>La fecha es 13 de Febrero de 2027 y queremos que seas parte de nuestra boda!</p>
+                <p>¡La fecha es 13 de Febrero de 2027 y queremos que seas parte de nuestra boda!</p>
                 <!-- <div class="share-bar"></div> -->
             </div>
         </div>
@@ -135,9 +438,9 @@
             <div class="col-md-3 hidden-sm hidden-xs"><img src="img/left.png" class="wp1"></div>
             <div class="col-md-6">
                 <p>
-                    La fecha es 2022, durante la pandemia. En ese tiempo era muy difícil socializar con gente fuera de tu círculo de conocidos, y pues por azares del destino que está de más explicar, hicimos match en Tinder. Nuestra primera cita iba a ser la típica cita en un café, pero al encontrarnos y hablar un poco, teníamos hambre así que fuimos a comer comida china. Al estar comiendo no pudimos hablar tanto, y Karly propuso que fueramos a jugar billar. Yo nunca había jugado, pero quería aprender y Karly dijo que me enseñaría. Obviamente ella no tuvo piedad y ganó todos los juegos. No fue para nada una cita convencional, pero nos divertimos mucho. A la siguiente semana la invité a salir una vez más, después de todo la humillación que sufrí en el billar no se podía quedar así.</p>
+                    La fecha es 2022, durante la pandemia. En ese tiempo era muy difícil socializar con gente fuera de tu círculo de conocidos, y pues por azares del destino que está de más explicar, hicimos match en Tinder. Nuestra primera cita iba a ser la típica cita en un café, pero al encontrarnos y hablar un poco, teníamos hambre así que fuimos a comer comida china. Hasta ahí todo normal, y cuando ya me iba a despedir, Karly propuso que fueramos a jugar billar. Yo nunca había jugado, pero quería aprender y Karly dijo que me enseñaría. Obviamente ella no tuvo piedad y ganó todos los juegos. No fue para nada una primera cita convencional, pero nos divertimos mucho. A la siguiente semana la invité a salir una vez más, después de todo la humillación que sufrí en el billar no se podía quedar así.</p>
 
-                    <p> Y bueno, terminamos encontrando el amor después de conectar de una manera única. El resto es historia y aquí estámos, organizando la boda <svg width="32" height="32" viewBox="0 0 24 24" fill="red">
+                    <p> Mientras más nos conocíamos, terminamos encontrando el amor después de conectar de una manera única. El resto es historia y aquí estámos, organizando la boda. </p> <p> <svg width="32" height="32" viewBox="0 0 24 24" fill="red">
   <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
 </svg>
                 </p>
@@ -152,10 +455,15 @@
 </section>
 
 <section class="events section-padding" id="events">
+
     <div class="container">
         <div class="row">
+            <div class="col-xs-12 section-border section-padding">
+            </div>
+        </div>
+        <div class="row">
             <div class="col-md-12">
-                <h3 class="header">Eventos</h3>
+                <h3 class="header">Día del evento</h3>
             </div>
         </div>
         <div class="row">
@@ -200,22 +508,28 @@
                 </div>
             </div>
         </div>
-        <div class="row section-padding">
+
+        
+        <div class="row">
+            <div class="col-xs-12 section-border section-padding">
+            </div>
+        </div>
+    </div>
+<p></p>
+        
+
+<!-- Dress Code Section – Gothic Elegance -->
+<section id="dress-code" class="section-padding">
+    <div class="container">
+
+        <!-- <div class="row section-padding">
             <div class="col-md-4 col-md-offset-4 text-center">
                 <a class="btn btn-accent btn-small" data-toggle="modal" data-target="#dc-modal">
                     <i class="fa fa-barcode"></i>&nbsp;&nbsp;Código de vestimenta
                 </a>
             </div>
-        </div>
-        <!--<div class="row">
-            <div class="col-xs-12 section-border section-padding">
-            </div>
-        </div>-->
-    </div>
+        </div> -->
 
-<!-- Dress Code Section – Gothic Elegance -->
-<section id="dress-code" class="section-padding">
-    <div class="container">
 
         <!-- Fila 1: Introducción y código general -->
         <div class="row">
@@ -279,7 +593,7 @@
         <div class="row">
             <div class="col-md-12 text-center">
                 <h3>¡Una imagen vale mil palabras!</h3>
-                <p>¡Ayúdanos a capturar cada momento subiendo tu foto a nuestro album!
+                <p>¡Ayúdanos a capturar cada momento de nuestra celebración subiendo tus fotos y videos a nuestro album!
                     <a href="https://photos.app.goo.gl/bQTaFTxZ2yPd3ySC9" target="_blank">Nuestra boda: Karly y Miguel</a>
                 </p>
             </div>
@@ -296,7 +610,7 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-12 text-center">
-                <h3 class="header"></h3>
+                <h3 class="header"> Retratos de nuestro amor</h3>
             </div>
         </div>
         <div class="row">
@@ -383,7 +697,7 @@
     </div> -->
     <div id="video2-content">
         <h5>Los Pilares Salón & Jardín</h5>
-        <p>Salamanca</p>
+        <p>Salamanca, Gto.</p>
     </div>
 </section>
 
@@ -431,6 +745,66 @@
     </div> -->
 </section>
 
+
+<section id="gifts" class="section-padding">
+    <div class="container">
+
+        <!-- <div class="row section-padding">
+            <div class="col-md-4 col-md-offset-4 text-center">
+                <a class="btn btn-accent btn-small" data-toggle="modal" data-target="#dc-modal">
+                    <i class="fa fa-barcode"></i>&nbsp;&nbsp;Código de vestimenta
+                </a>
+            </div>
+        </div> -->
+
+
+        <!-- Fila 1: Introducción y código general -->
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2 text-center">
+                <h3 class="section-padding">Regalos</h3>
+                <!-- <h5>Boda y Recepción <span class="time">3PM - 11:59PM</span></h5> -->
+                <p style="font-size: 17px; font-weight: 300; border-top: 1px solid #2b2538; padding-top: 40px;">
+                    <strong>Nuestro mayor deseo es compartir este día contigo. Ahora bien, si deseas obsequiarnos algo, te dejamos algunas ideas:</strong><br>
+                </p>
+            </div>
+        </div>
+
+        <div class="row" style="margin-top: 30px;">
+            
+            <!-- Columna ELLAS -->
+            <div class="col-sm-6 text-center">
+                <div class="gothic-card">
+                    <h4 style="margin-top: 20px; color: #e0d0f0;">Regalos para nuestro hogar</h4>
+                    <!-- <img src="img/ellas.png" 
+                         alt="Estilo gótico femenino" 
+                         class="img-responsive img-placeholder"> -->
+                    <!-- <p style="text-align: center; padding: 0 15px;">
+                        Mesa de regalos para nuestro hogar.
+                    </p> -->
+                </div>
+            </div>
+
+            <!-- Columna ELLOS -->
+            <div class="col-sm-6 text-center">
+                <div class="gothic-card">
+                    <h4 style="margin-top: 20px; color: #e0d0f0;">Transferencia bancaria</h4>
+                    <!-- <img src="img/ellos.png" 
+                         alt="Estilo gótico masculino" 
+                         class="img-responsive img-placeholder"> -->
+                    <!-- <p style="text-align: center; padding: 0 15px;">
+                        Transferencia bancaria.
+                    </p> -->
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Fila 3: Cierre / Idea principal (fuera de las columnas) -->
+        
+
+    </div>
+</section>
+
 <section class="rsvp text-center" id="rsvp">
 
     <div id="rsvp-modal" class="modal fade" tabindex="-1" role="dialog">
@@ -452,8 +826,8 @@
     <div class="container">
         <div class="row">
             <div class="col-md-6 col-md-offset-3">
-                <h3>¿Qué esperas?</h3>
-                <p>Apreciariamos que confirmes tu asistencia antes del 30 de Noviembre de 2026</p>
+                <h3>¿Asistirás a la celebración?</h3>
+                <p>Apreciariamos que confirmes tu asistencia antes del 30 de Noviembre de 2026.</p>
                 <form id="rsvp-form" class="rsvp-form" action="" method="POST">
                     
                     <!-- Fila 1: Nombre + Correo -->
@@ -493,7 +867,7 @@
                         <div class="col-md-6 col-sm-6">
                             <div class="form-input-group">
                                 <i class="fa fa-key"></i>
-                                <input type="number" name="invite_code" id="invite_code" class="" min="0" placeholder="Invite code" required>
+                                <input type="number" name="invite_code" id="invite_code" class="" min="0" placeholder="Código de Invitación" required>
                             </div>
                         </div>
                         <div class="col-md-6 col-sm-6">
@@ -508,10 +882,17 @@
 
                     <!-- Botón -->
                     <button class="btn-fill rsvp-btn">
-                        Aceptar invitación
+                        Enviar respuesta
                     </button>
 
                 </form>
+            </div>
+            <div class="row" style="margin-top: 50px;">
+                <div class="col-md-8 col-md-offset-2 text-center">
+                    <p style="font-size: 17px; font-weight: 300; border-top: 1px solid #2b2538; padding-top: 40px;">
+                        ¡Gracias por celebrar con nosotros este día único!
+                    </p>
+                </div>
             </div>
         </div>
     </div>
@@ -574,5 +955,45 @@
     ga('create', 'UA-46465113-4', 'auto');
     ga('send', 'pageview');
 </script> -->
+<script>
+  // Lock scroll immediately on load
+  document.body.classList.add('envelope-active');
+
+  $(document).ready(function() {
+    var isOpened = false;
+
+    function openEnvelope() {
+      if (isOpened) return;
+      isOpened = true;
+
+      // 1. Open envelope animation
+      $('#gothEnvelope').addClass('open');
+      
+      // 2. Hide instruction text quietly
+      $('#gothInstruction').css('opacity', '0');
+
+      // 3. Allow guest to tap anywhere to dismiss immediately
+      $('#envelope-overlay').one('click touchstart', function() {
+        dismissOverlay();
+      });
+
+      // 4. Auto-dismiss after 4.5 seconds
+      setTimeout(function() {
+        dismissOverlay();
+      }, 4500);
+    }
+
+    function dismissOverlay() {
+      $('#envelope-overlay').addClass('fade-out');
+      $('body').removeClass('envelope-active');
+    }
+
+    // Trigger on tap/click
+    $('#gothEnvelope').on('click touchstart', function(e) {
+      e.stopPropagation();
+      openEnvelope();
+    });
+  });
+</script>
 </body>
 </html>
