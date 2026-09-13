@@ -8,6 +8,9 @@
 <!--[if gt IE 8]><!-->
 <html class="no-js" lang="en"> <!--<![endif]-->
 <head>
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <title>¡Nos vamos a casar!</title>
@@ -65,7 +68,65 @@
 <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cinzel:wght@500;700&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Allura&family=Cinzel:wght@500;700&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Italianno&family=Cinzel:wght@500;700&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+  .paleta-atuendo {
+    max-width: 720px;
+    font-family: inherit;
+    color: inherit;
+  }
 
+  .paleta-subtitulo {
+    margin: 1.75rem 0 0.85rem;
+    font-size: 1.65rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    opacity: 0.75;
+  }
+
+  .paleta-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem 0.9rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .paleta-item {
+    width: 92px;
+    font-size: 0.72rem;
+    line-height: 1.3;
+    text-align: center;
+    opacity: 0.9;
+  }
+
+  .muestra {
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 62px;
+    margin-bottom: 0.4rem;
+    border-radius: 8px;
+    box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.18);
+  }
+
+  .marca {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: #ffffff;
+    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.6);
+  }
+
+  .marca.prohibido {
+    font-size: 1.3rem;
+  }
+</style>
 <style>
   /* Lock scroll while envelope is active */
   body.envelope-active {
@@ -354,7 +415,7 @@
         </svg>
 
         <p>Acompáñanos a celebrar nuestra boda</p>
-        <p style="font-family: 'Cinzel', serif; font-size: 13px; color: #c5a059; margin-top: 6px; font-style: normal; letter-spacing: 3px;">13 . 02 . 2027</p>
+        <p style="font-family: 'Cinzel', serif; font-size: 13px; color: #c5a059; margin-top: 6px; font-style: normal; letter-spacing: 3px;">13 . Febrero . 2027</p>
       </div>
     </div>
 
@@ -458,44 +519,45 @@
 
     <div class="container">
         <div class="row">
-            <div class="col-xs-12 section-border section-padding">
+            <div class="col-xs-12 section-border section-padding text-center">
+                <h3 class="section-padding">Día del evento</h3>
             </div>
         </div>
         <div class="row">
-            <div class="col-md-12">
+            <!-- <div class="col-md-12">
                 <h3 class="header">Día del evento</h3>
-            </div>
+            </div> -->
         </div>
         <div class="row">
             <div class="col-md-6 col-sm-12 col-xs-12 leftcol">
                 <div class="wp3">
                     <p><strong>13 de Febrero</strong></p>
 
-                    <h5>Ceremonia <span class="time">1PM - 3PM</span></h5>
-                    <p>Agregar texto</p>
+                    <h5>Recepción <span class="time">2:30 PM</span></h5>
+                    <p></p>
                 </div>
                 <div class="wp5">
-                    <h5>Entrada <span class="time">4PM - 5PM</span></h5>
-                    <p>Agrgar texto</p>
+                    <h5>Ceremonia <span class="time">3 PM</span></h5>
+                    <p></p>
                 </div>
                 <div class="wp5">
-                    <h5>Brindis <span class="time">4PM - 5PM</span></h5>
-                    <p>Agrgar texto</p>
+                    <h5>Brindis <span class="time">3:30 PM</span></h5>
+                    <p></p>
                 </div>
                 <div class="wp5">
-                    <h5>Comida <span class="time">4PM - 5PM</span></h5>
-                    <p>Agrgar texto</p>
+                    <h5>Nuestro primer baile <span class="time">4 PM</span></h5>
+                    <p></p>
                 </div>
             </div>
             <div class="col-md-6 col-sm-12 col-xs-12 rightcol">
                 <!-- <p><strong>28th November</strong></p> -->
                 <div class="wp6">
-                    <h5>¡A Bailar! <span class="time">7PM-12AM</span></h5>
-                    <p>Agregar texto</p>
+                    <h5>Comida <span class="time">4:30 PM</span></h5>
+                    <p></p>
                 </div>
                 <div class="wp5">
-                    <h5>Pastel <span class="time">4PM - 5PM</span></h5>
-                    <p>Agrgar texto</p>
+                    <h5>¡A bailar! <span class="time">5 PM</span></h5>
+                    <p></p>
                 </div>
                 
                 <!-- <div class="wp4">
@@ -503,8 +565,12 @@
                     <p>Agregar texto</p>
                 </div> -->
                 <div class="wp6">
-                    <h5>Música en vivo <span class="time">7PM-12AM</span></h5>
-                    <p>Agregar texto</p>
+                    <h5>Pastel <span class="time">8 PM</span></h5>
+                    <p></p>
+                </div>
+                <div class="wp6">
+                    <h5>Banda de rock <span class="time">9 PM</span></h5>
+                    <p></p>
                 </div>
             </div>
         </div>
@@ -535,11 +601,124 @@
         <div class="row">
             <div class="col-md-8 col-md-offset-2 text-center">
                 <h3 class="section-padding">Código de vestimenta</h3>
-                <h5>Boda y Recepción <span class="time">3PM - 11:59PM</span></h5>
-                <p>
+                <!-- <h5>Boda y Recepción <span class="time">3PM - 11:59PM</span></h5> -->
+                <!-- <p>
                     <strong>Atuendo gótico elegante</strong><br>
-                    Para celebrar este evento principal, te invitamos a vestir con tu mejor estilo gótico. Los colores oscuros como negro, burdeos, morado profundo, verde esmeralda o gris carbón son más que bienvenidos.
-                </p>
+                    Para celebrar este evento principal, te invitamos a vestir con tu mejor estilo de etiqueta. 
+                    Los colores sugeridos son los siguientes.
+                    Por favor evitar colores brillantes y colores pasteles.
+                </p> -->
+                <div class="paleta-atuendo">
+  <p>
+    <strong>Atuendo gótico elegante</strong><br>
+    Te invitamos a acompañarnos con tu mejor estilo de etiqueta.
+    Por favor evitar colores brillantes y colores pasteles. Los colores sugeridos son los siguientes:
+  </p>
+
+  <h3 class="paleta-subtitulo">&#x2714; Colores sugeridos &#x2714;</h3>
+  <ul class="paleta-grid">
+    <li class="paleta-item">
+      <span class="muestra" style="background:#190E5D"><span class="marca">✓</span></span>
+      Índigo profundo
+    </li>
+    <li class="paleta-item">
+      <span class="muestra" style="background:#22777E"><span class="marca">✓</span></span>
+      Verde azulado
+    </li>
+    <li class="paleta-item">
+      <span class="muestra" style="background:#0052A4"><span class="marca">✓</span></span>
+      Azul cobalto
+    </li>
+    <li class="paleta-item">
+      <span class="muestra" style="background:#2D2A77"><span class="marca">✓</span></span>
+      Azul violeta
+    </li>
+    <li class="paleta-item">
+      <span class="muestra" style="background:#26757C"><span class="marca">✓</span></span>
+      Verde petróleo
+    </li>
+    <li class="paleta-item">
+      <span class="muestra" style="background:#487A47"><span class="marca">✓</span></span>
+      Verde bosque
+    </li>
+    <li class="paleta-item">
+      <span class="muestra" style="background:#622D59"><span class="marca">✓</span></span>
+      Ciruela oscuro
+    </li>
+    <li class="paleta-item">
+      <span class="muestra" style="background:#902C2E"><span class="marca">✓</span></span>
+      Rojo vino
+    </li>
+    <li class="paleta-item">
+      <span class="muestra" style="background:#624247"><span class="marca">✓</span></span>
+      Malva oscuro
+    </li>
+    <li class="paleta-item">
+      <span class="muestra" style="background:#58585A"><span class="marca">✓</span></span>
+      Gris carbón
+    </li>
+    <li class="paleta-item">
+      <span class="muestra" style="background:#241E20"><span class="marca">✓</span></span>
+      Negro
+    </li>
+    <!-- <li class="paleta-item">
+      <span class="muestra" style="background:#7C6D6A"><span class="marca">✓</span></span>
+      Taupe
+    </li> -->
+    <li class="paleta-item">
+      <span class="muestra" style="background:#473332"><span class="marca">✓</span></span>
+      Marrón café
+    </li>
+  </ul>
+
+  <h3 class="paleta-subtitulo">&#128711; Colores a evitar &#128711;</h3>
+  <ul class="paleta-grid">
+    <li class="paleta-item">
+      <span class="muestra" style="background:#FFFFFF"><span class="marca prohibido">✕</span></span>
+      Blanco
+    </li>
+    <li class="paleta-item">
+      <span class="muestra" style="background:#EF519E"><span class="marca prohibido">✕</span></span>
+      Rosa chicle
+    </li>
+    <li class="paleta-item">
+      <span class="muestra" style="background:#0793D0"><span class="marca prohibido">✕</span></span>
+      Azul brillante
+    </li>
+    <li class="paleta-item">
+      <span class="muestra" style="background:#86CDEB"><span class="marca prohibido">✕</span></span>
+      Celeste pastel
+    </li>
+    <li class="paleta-item">
+      <span class="muestra" style="background:#015B27"><span class="marca prohibido">✕</span></span>
+      Verde brillante
+    </li>
+    <li class="paleta-item">
+      <span class="muestra" style="background:#69844D"><span class="marca prohibido">✕</span></span>
+      Verde oliva
+    </li>
+    <li class="paleta-item">
+      <span class="muestra" style="background:#FE6F5F"><span class="marca prohibido">✕</span></span>
+      Coral
+    </li>
+    <li class="paleta-item">
+      <span class="muestra" style="background:#D30033"><span class="marca prohibido">✕</span></span>
+      Rojo brillante
+    </li>
+    <li class="paleta-item">
+      <span class="muestra" style="background:#0493A4"><span class="marca prohibido">✕</span></span>
+      Turquesa
+    </li>
+    <li class="paleta-item">
+      <span class="muestra" style="background:#ACA89D"><span class="marca prohibido">✕</span></span>
+      Gris beige
+    </li>
+    <!-- <li class="paleta-item">
+      <span class="muestra" style="background:#69814D"><span class="marca prohibido">✕</span></span>
+      Verde salvia
+    </li> -->
+  </ul>
+</div>
             </div>
         </div>
 
@@ -550,11 +729,11 @@
             <div class="col-sm-6 text-center">
                 <div class="gothic-card">
                     <h4 style="margin-top: 20px; color: #e0d0f0;">Ellas</h4>
-                    <img src="img/ellas.png" 
+                    <img src="img/ellas.jpg" 
                          alt="Estilo gótico femenino" 
                          class="img-responsive img-placeholder">
                     <p style="text-align: left; padding: 0 15px;">
-                        Pueden usar vestidos largos negros o de tonos oscuros, encajes, terciopelo, corsets elegantes, estilo romántico, o faldas voluminosas.
+                        Pueden usar vestidos largos, elegantes respecto a la temática.
                     </p>
                 </div>
             </div>
@@ -567,7 +746,7 @@
                          alt="Estilo gótico masculino" 
                          class="img-responsive img-placeholder">
                     <p style="text-align: left; padding: 0 15px;">
-                        Pueden optar por trajes negros o gris oscuro, camisas de cuello alto, chalecos de terciopelo, sacos largos o detalles de encaje en la solapa. También se aceptan gabardinas o toques románticos y lúgubres.
+                        Pueden optar por trajes negros o colores oscuros, camisas de cuello alto, chalecos y sacos largos.
                     </p>
                 </div>
             </div>
@@ -615,22 +794,22 @@
         </div>
         <div class="row">
             <div class="col-md-2">
-                <a class="fancybox" rel="group" href="img/eng_pics/0.jpg">
+                <a class="fancybox" rel="group" href="img/eng_pics/11.jpg">
                     <div class="img-wrap">
                         <div class="overlay">
                             <i class="fa fa-search"></i>
                         </div>
-                        <img src="img/eng_pics/0.jpg" alt=""/>
+                        <img src="img/eng_pics/11.jpg" alt=""/>
                     </div>
                 </a>
             </div>
             <div class="col-md-2">
-                <a class="fancybox" rel="group" href="img/eng_pics/8.png">
+                <a class="fancybox" rel="group" href="img/eng_pics/9.jpg">
                     <div class="img-wrap">
                         <div class="overlay">
                             <i class="fa fa-search"></i>
                         </div>
-                        <img src="img/eng_pics/8.png" alt=""/>
+                        <img src="img/eng_pics/9.jpg" alt=""/>
                     </div>
                 </a>
             </div>
@@ -645,16 +824,6 @@
                 </a>
             </div>
             <div class="col-md-2">
-                <a class="fancybox" rel="group" href="img/eng_pics/5.png">
-                    <div class="img-wrap">
-                        <div class="overlay">
-                            <i class="fa fa-search"></i>
-                        </div>
-                        <img src="img/eng_pics/5.png" alt=""/>
-                    </div>
-                </a>
-            </div>
-            <div class="col-md-2">
                 <a class="fancybox" rel="group" href="img/eng_pics/4.jpg">
                     <div class="img-wrap">
                         <div class="overlay">
@@ -665,12 +834,52 @@
                 </a>
             </div>
             <div class="col-md-2">
-                <a class="fancybox" rel="group" href="img/eng_pics/9.png">
+                <a class="fancybox" rel="group" href="img/eng_pics/10.jpg">
                     <div class="img-wrap">
                         <div class="overlay">
                             <i class="fa fa-search"></i>
                         </div>
-                        <img src="img/eng_pics/9.png" alt=""/>
+                        <img src="img/eng_pics/10.jpg" alt=""/>
+                    </div>
+                </a>
+            </div>
+            <div class="col-md-2">
+                <a class="fancybox" rel="group" href="img/eng_pics/8.png">
+                    <div class="img-wrap">
+                        <div class="overlay">
+                            <i class="fa fa-search"></i>
+                        </div>
+                        <img src="img/eng_pics/8.png" alt=""/>
+                    </div>
+                </a>
+            </div>
+            <div class="col-md-2">
+                <a class="fancybox" rel="group" href="img/eng_pics/5.png">
+                    <div class="img-wrap">
+                        <div class="overlay">
+                            <i class="fa fa-search"></i>
+                        </div>
+                        <img src="img/eng_pics/5.png" alt=""/>
+                    </div>
+                </a>
+            </div>
+            <div class="col-md-2">
+                <a class="fancybox" rel="group" href="img/eng_pics/12.jpg">
+                    <div class="img-wrap">
+                        <div class="overlay">
+                            <i class="fa fa-search"></i>
+                        </div>
+                        <img src="img/eng_pics/12.jpg" alt=""/>
+                    </div>
+                </a>
+            </div>
+            <div class="col-md-2">
+                <a class="fancybox" rel="group" href="img/eng_pics/0.jpg">
+                    <div class="img-wrap">
+                        <div class="overlay">
+                            <i class="fa fa-search"></i>
+                        </div>
+                        <img src="img/eng_pics/0.jpg" alt=""/>
                     </div>
                 </a>
             </div>
@@ -915,7 +1124,7 @@
 <script src="js/jquery.flexslider-min.js"></script>
 <script src="js/jquery.mb.YTPlayer.min.js"></script>
 <script src="js/vendor/ouical.js"></script>
-<script src="js/scripts.min.js"></script>
+<script src="js/scripts.js"></script>
 <!-- <script>
         // 2. Wait for the DOM content to fully load
         window.addEventListener('DOMContentLoaded', () => {

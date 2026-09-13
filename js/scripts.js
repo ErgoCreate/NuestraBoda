@@ -226,8 +226,8 @@ $(document).ready(function () {
         $('#alert-wrapper').html(alert_markup('info', '<strong>¡Espera un momento!</strong> Estamos guardando tus datos.'));
 
         // --- Validación del código de invitación ---
-        if (MD5($('#invite_code').val()) !== '7b5b23f4aadf9513306bcd59afb6e4c9'
-            && MD5($('#invite_code').val()) !== '2da09179fa6dc5f414c5c51f8c5915ad') {
+        if (MD5($('#invite_code').val()) !== '7e7e69ea3384874304911625ac34321c'
+            && MD5($('#invite_code').val()) !== 'b0e53b10c1f55ede516b240036b88f40') {
             $('#alert-wrapper').html(alert_markup('danger', '<strong>¡Lo sentimos!</strong> Tu código de invitación es incorrecto.'));
             return; // Detener aquí si el código no coincide
         }
@@ -236,7 +236,7 @@ $(document).ready(function () {
         var data = $(this).serialize(); // <--- ¡DEFINIR data!
 
         // Usa la URL que funcionó en Python
-        var scriptUrl = 'https://script.google.com/macros/s/AKfycby2AHNRRwQsz9xfRYXhzWIt5_ijTGzifTpUE79ctkpBOUXCcSgLCXqmDmuObD2c1-tP/exec';
+        var scriptUrl = 'https://script.google.com/macros/s/AKfycbzrPpZL3AfoSmLnHkOXIRcbQ2caUs11r_PEHLXijiP7yr5717Bn4NiJQIWgt1CXT03x/exec';
 
         $.post(scriptUrl, data)
             .done(function (response) {
