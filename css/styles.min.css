@@ -522,22 +522,6 @@ header .member-actions {
 /* ==========================================================================
    Events & Blog – Gothic Chronicle
    ========================================================================== */
-.events .leftcol {
-    padding-right: 100px;
-    border-right: solid 1px #2f2840;
-}
-
-.events .rightcol {
-    padding-left: 100px;
-}
-
-.events .time {
-    font-size: 13px;
-    font-style: italic;
-    text-transform: lowercase;
-    color: rgba(200, 180, 225, 0.7);
-}
-
 .blog {
     padding-bottom: 120px;
 }
@@ -710,46 +694,6 @@ header .member-actions {
 /* ==========================================================================
    Video & Map – Mystic Overlay
    ========================================================================== */
-#video-bg {
-    height: 300px;
-}
-
-#video-content {
-    width: 100%;
-    height: 100%;
-    padding-top: 100px;
-    position: relative;
-    background: rgba(0, 0, 0, 0.65);
-    text-align: center;
-}
-
-#video2-content {
-    width: 100%;
-    height: 100%;
-    padding-top: 100px;
-    position: relative;
-    background: rgba(0, 0, 0, 0.65);
-    text-align: center;
-}
-
-#video-content h5 {
-    color: #f0e6ff;
-    font-size: 30px;
-    font-weight: 300;
-    letter-spacing: 10px;
-}
-
-#video2-content h5 {
-    color: #f0e6ff;
-    font-size: 30px;
-    font-weight: 300;
-    letter-spacing: 10px;
-}
-
-#video-content p {
-    color: #dfd2f0;
-}
-
 #map-canvas {
     height: 500px;
     width: 100%;
@@ -1009,42 +953,6 @@ body.modal-open {
     }
 }
 
-/* Dress Code Cards */
-#dress-code .gothic-card {
-    background: #120e19;
-    padding: 20px 10px 30px;
-    border: 1px solid #2b2538;
-    border-radius: 8px;
-    transition: all 0.3s ease;
-    height: 100%;
-}
-
-#dress-code .gothic-card:hover {
-    border-color: #c6973a;
-    box-shadow: 0 0 25px rgba(198, 151, 58, 0.15);
-}
-
-#dress-code .img-placeholder {
-    width: 50%;
-    height: auto;
-    border-radius: 6px;
-    border: 1px solid #3d3452;
-    background: #0e0b16;
-    display: block;
-    margin: 0 auto;
-}
-
-#dress-code .time {
-    color: #c6973a;
-    font-style: italic;
-    margin-left: 10px;
-}
-
-#dress-code h4 {
-    font-weight: 600;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-}
 .rsvp .rsvp-form .form-input-group i.fa-phone {
     font-size: 14px;
     position: absolute;
@@ -1059,4 +967,1627 @@ body.modal-open {
   height: auto;     /* Keeps the QR code perfectly square */
   max-width: 100%;  /* Prevents it from stretching larger than its original size */
   margin: 0 auto;   /* Centers the image horizontally within its parent */
+}
+
+/* ==========================================================================
+   TEMA GÓTICO ELEGANTE
+   Cinzel (títulos) + Cormorant Garamond (texto), filetes y estrellas malva.
+   Los colores del tema están en las variables --gt-* de :root: cámbialos ahí
+   y se actualiza todo el sitio. El dorado (--gt-oro) queda para botones,
+   enlaces e iconos; el malva (--gt-linea) para marcos y ornamentos.
+   ========================================================================== */
+:root {
+    --gt-fondo: #0a080f;
+    --gt-linea: #9b7f98;
+    --gt-linea-suave: rgba(155, 127, 152, 0.4);
+    --gt-anillo: rgba(196, 168, 192, 0.7);
+    --gt-titulo: #f1e6f4;
+    --gt-texto: rgba(232, 220, 238, 0.9);
+    --gt-lila: #b99bd0;
+    --gt-oro: #c6973a;
+    --gt-vino: #963047;
+    --gt-estrella: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23b89bb5' d='M12 0C12.6 6.9 17.1 11.4 24 12C17.1 12.6 12.6 17.1 12 24C11.4 17.1 6.9 12.6 0 12C6.9 11.4 11.4 6.9 12 0Z'/%3E%3C/svg%3E");
+    --gt-luna: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpath fill='%23c4a7c1' d='M16.609 4.016A12 12 0 1 0 26.861 21.102A10 10 0 1 1 16.609 4.016Z'/%3E%3C/svg%3E");
+    --gt-display: "Cinzel", "Cormorant Garamond", "Times New Roman", serif;
+    --gt-serif: "Cormorant Garamond", Georgia, "Times New Roman", serif;
+    /* rosas y encabezados con rosas (se ajustan por tamaño de pantalla al final del archivo) */
+    --rosa-w: 48px;
+    --rosa-h: 116px;
+    --rosa-x: 12px;
+    --cab-pad-marco: 47px;
+    --cab-pad-libre: 68px;
+    --cab-min: 96px;
+    --cab-top: 0px;
+}
+
+/* Cifras alineadas (2027, 2:30 pm) en lugar de las "de texto" que trae Cormorant por defecto */
+#invitation, #intro, #events, #dress-code, #album, #video-bg, #map, #gifts, #rsvp, footer {
+    font-variant-numeric: lining-nums;
+}
+
+/* ==========================================================================
+   Ornamentos reutilizables
+   ========================================================================== */
+.orn-estrella {
+    display: inline-block;
+    flex: 0 0 auto;
+    width: 14px;
+    height: 14px;
+    background: var(--gt-estrella) center / contain no-repeat;
+}
+
+.orn-luna {
+    display: inline-block;
+    flex: 0 0 auto;
+    width: 30px;
+    height: 30px;
+    background: var(--gt-luna) center / contain no-repeat;
+}
+
+.orn-rombo {
+    flex: 0 0 auto;
+    width: 6px;
+    height: 6px;
+    border: 1px solid var(--gt-linea);
+    transform: rotate(45deg);
+}
+
+/* Línea con adorno al centro; los filetes se desvanecen hacia afuera */
+.orn-cielo,
+.orn-divisor {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.orn-cielo > span,
+.orn-divisor > span,
+.orn-rotulo > span {
+    margin-left: 6px;
+    margin-right: 6px;
+}
+
+.orn-cielo::before,
+.orn-divisor::before,
+.orn-rotulo::before {
+    content: "";
+    flex: 1 1 0;
+    min-width: 12px;
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--gt-linea));
+}
+
+.orn-cielo::after,
+.orn-divisor::after,
+.orn-rotulo::after {
+    content: "";
+    flex: 1 1 0;
+    min-width: 12px;
+    height: 1px;
+    background: linear-gradient(to left, transparent, var(--gt-linea));
+}
+
+.orn-cielo {
+    max-width: 560px;
+    margin-bottom: 26px;
+}
+
+.orn-divisor {
+    max-width: 640px;
+    margin-top: 6px;
+    margin-bottom: 34px;
+}
+
+/* Rótulo: ✦ TEXTO ✦ entre filetes */
+.orn-rotulo {
+    display: flex;
+    align-items: center;
+    margin: 0 0 28px;
+    font-family: var(--gt-display);
+    font-size: 13px;
+    font-weight: 500;
+    line-height: 1.4;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: var(--gt-titulo);
+}
+
+.orn-rotulo-texto {
+    padding-left: 0.24em; /* compensa el espacio final del letter-spacing */
+    text-align: center;
+}
+
+/* ==========================================================================
+   Marco: doble filete con estrellas en las esquinas
+   (el fondo del contenedor debe coincidir con --gt-fondo para que las
+   esquinas "recorten" el filete)
+   ========================================================================== */
+.marco {
+    position: relative;
+    max-width: var(--marco-w, 900px);
+    margin-left: auto;
+    margin-right: auto;
+    padding: 48px 20px 44px;
+    text-align: center;
+    border: 1px solid var(--gt-linea);
+}
+
+.marco--ancho { --marco-w: 1140px; }
+.marco--estrecho { --marco-w: 760px; }
+
+.marco::before {
+    content: "";
+    position: absolute;
+    top: 7px;
+    right: 7px;
+    bottom: 7px;
+    left: 7px;
+    border: 1px solid var(--gt-linea-suave);
+    pointer-events: none;
+}
+
+.marco::after {
+    content: "";
+    position: absolute;
+    top: -14px;
+    right: -14px;
+    bottom: -14px;
+    left: -14px;
+    pointer-events: none;
+    background-repeat: no-repeat;
+    background-image:
+        var(--gt-estrella), var(--gt-estrella), var(--gt-estrella), var(--gt-estrella),
+        radial-gradient(circle, var(--gt-fondo) 12px, transparent 12.5px),
+        radial-gradient(circle, var(--gt-fondo) 12px, transparent 12.5px),
+        radial-gradient(circle, var(--gt-fondo) 12px, transparent 12.5px),
+        radial-gradient(circle, var(--gt-fondo) 12px, transparent 12.5px);
+    background-size:
+        16px 16px, 16px 16px, 16px 16px, 16px 16px,
+        28px 28px, 28px 28px, 28px 28px, 28px 28px;
+    background-position:
+        left 6px top 6px, right 6px top 6px, left 6px bottom 6px, right 6px bottom 6px,
+        left top, right top, left bottom, right bottom;
+}
+
+/* Marco de foto: doble filete con una estrella arriba y abajo */
+.foto-marco {
+    position: relative;
+    padding: 9px;
+    border: 1px solid var(--gt-linea);
+}
+
+.foto-marco::before {
+    content: "";
+    position: absolute;
+    top: 3px;
+    right: 3px;
+    bottom: 3px;
+    left: 3px;
+    border: 1px solid var(--gt-linea-suave);
+    pointer-events: none;
+}
+
+.foto-marco::after {
+    content: "";
+    position: absolute;
+    top: -9px;
+    right: 0;
+    bottom: -9px;
+    left: 0;
+    pointer-events: none;
+    background-repeat: no-repeat;
+    background-image:
+        var(--gt-estrella), var(--gt-estrella),
+        radial-gradient(circle, var(--gt-fondo) 8px, transparent 8.5px),
+        radial-gradient(circle, var(--gt-fondo) 8px, transparent 8.5px);
+    background-size: 10px 10px, 10px 10px, 18px 18px, 18px 18px;
+    background-position: center top 4px, center bottom 4px, center top, center bottom;
+}
+
+.foto-marco img,
+.foto-marco iframe {
+    display: block;
+    width: 100%;
+}
+
+.foto-marco img {
+    height: auto;
+}
+
+/* ==========================================================================
+   Encabezado de sección y texto corrido
+   ========================================================================== */
+.sec-cab {
+    margin: 0 auto 34px;
+    text-align: center;
+}
+
+.sec-titulo {
+    margin: 0 0 14px;
+    padding: 0 0 0 0.12em;
+    font-family: var(--gt-display);
+    font-size: 24px;
+    font-weight: 500;
+    line-height: 1.3;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--gt-titulo);
+    -webkit-text-wrap: balance;
+    text-wrap: balance;
+}
+
+.sec-cab .orn-divisor {
+    max-width: 360px;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.sec-texto {
+    max-width: 32em;
+    margin: 0 auto 26px;
+    padding: 0;
+    font-family: var(--gt-serif);
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 1.65;
+    text-align: center;
+    color: var(--gt-texto);
+    -webkit-text-wrap: balance;
+    text-wrap: balance;
+}
+
+.sec-texto a {
+    color: var(--gt-oro);
+    text-decoration: none;
+    white-space: nowrap;
+    border-bottom: 1px solid rgba(198, 151, 58, 0.45);
+}
+
+.sec-texto a:hover,
+.sec-texto a:focus {
+    color: #e0b05c;
+    border-bottom-color: #e0b05c;
+}
+
+.sec-sub {
+    margin: 0;
+    padding: 0;
+    -webkit-text-wrap: balance;
+    text-wrap: balance;
+    font-family: var(--gt-serif);
+    font-size: 24px;
+    font-style: italic;
+    font-weight: 500;
+    line-height: 1.3;
+    color: var(--gt-lila);
+}
+
+.sec-cierre {
+    max-width: 30em;
+    margin: 0 auto;
+    padding: 0;
+    font-family: var(--gt-serif);
+    font-size: 21px;
+    font-style: italic;
+    font-weight: 500;
+    line-height: 1.55;
+    color: var(--gt-titulo);
+}
+
+/* ==========================================================================
+   Invitación
+   ========================================================================== */
+#invitation {
+    padding: 64px 0 40px;
+}
+
+#invitation .orn-cielo {
+    max-width: 320px;
+    margin-bottom: 22px;
+}
+
+#invitation .inv-titulo {
+    margin: 0 0 14px;
+    padding: 0;
+    font-family: "Allura", "Cormorant Garamond", cursive;
+    font-size: 54px;
+    font-weight: 400;
+    line-height: 1.15;
+    letter-spacing: 0;
+    text-transform: none;
+    color: #c5a059;
+    text-shadow: 0 2px 14px rgba(0, 0, 0, 0.6);
+    -webkit-text-wrap: balance;
+    text-wrap: balance;
+}
+
+#invitation .inv-texto {
+    max-width: 24em;
+    margin: 0 auto;
+    padding: 0;
+    font-family: var(--gt-serif);
+    font-size: 23px;
+    font-style: italic;
+    font-weight: 500;
+    line-height: 1.5;
+    color: var(--gt-texto);
+    -webkit-text-wrap: balance;
+    text-wrap: balance;
+}
+
+#invitation .orn-divisor {
+    max-width: 360px;
+    margin-top: 34px;
+    margin-bottom: 0;
+}
+
+/* ==========================================================================
+   Nuestra historia de amor
+   ========================================================================== */
+#intro {
+    padding: 56px 0 56px;
+}
+
+#intro .hist-texto {
+    max-width: 32em;
+    margin: 0 auto 22px;
+    padding: 0;
+    font-family: var(--gt-serif);
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 1.75;
+    text-align: center;
+    color: var(--gt-texto);
+}
+
+#intro .hist-corazon {
+    margin-bottom: 0;
+}
+
+#intro .hist-corazon svg {
+    display: block;
+    width: 22px;
+    height: 22px;
+    margin: 0 auto;
+}
+
+/* ==========================================================================
+   Día del evento (programa con puntos guía)
+   ========================================================================== */
+#events {
+    --gt-fondo: #181422;
+    padding: 56px 0 64px;
+    background: #181422;
+}
+
+#events .ev-fecha {
+    max-width: 560px;
+    margin: 0 auto 22px;
+}
+
+#events .ev-programa {
+    max-width: 560px;
+    margin: 0 auto;
+}
+
+#events .ev-item {
+    padding: 13px 0;
+}
+
+#events .ev-item h5 {
+    display: flex;
+    align-items: baseline;
+    margin: 0;
+    font-family: var(--gt-display);
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1.5;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--gt-titulo);
+}
+
+#events .ev-item .time {
+    display: flex;
+    flex: 1 1 auto;
+    align-items: baseline;
+    margin-left: 6px;
+    font-family: var(--gt-serif);
+    font-size: 20px;
+    font-style: italic;
+    font-weight: 500;
+    letter-spacing: 0;
+    text-transform: lowercase;
+    white-space: nowrap;
+    color: var(--gt-lila);
+}
+
+#events .ev-item .time::before {
+    content: "";
+    flex: 1 1 auto;
+    min-width: 14px;
+    margin: 0 12px 0 8px;
+    border-bottom: 1px dotted rgba(155, 127, 152, 0.6);
+}
+
+@media (min-width: 992px) {
+    #events .ev-programa {
+        display: flex;
+        max-width: none;
+    }
+
+    #events .ev-programa::before,
+    #events .ev-programa::after {
+        display: none;
+    }
+
+    #events .leftcol {
+        padding-right: 40px;
+        border-right: 1px solid var(--gt-linea-suave);
+    }
+
+    #events .rightcol {
+        padding-left: 40px;
+    }
+
+    #events .ev-item h5 {
+        font-size: 15px;
+    }
+}
+
+/* ==========================================================================
+   Código de vestimenta
+   ========================================================================== */
+#dress-code {
+    --gt-fondo: #0c090f;
+    --dc-d: 54px;          /* diámetro de las muestras "sugeridas" */
+    --dc-d-evitar: 44px;   /* diámetro de las muestras "a evitar" */
+    padding: 56px 0 64px;
+    background: var(--gt-fondo);
+}
+
+#dress-code .marco {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 48px 14px 44px;
+}
+
+#dress-code .foto-marco {
+    max-width: 300px;
+    margin: 0 auto 22px;
+}
+
+#dress-code .orn-cielo {
+    max-width: 190px;
+}
+
+#dress-code .orn-divisor {
+    margin-top: 6px;
+    margin-bottom: 34px;
+}
+
+/* Rosas grabadas (la de la derecha es el reflejo de la izquierda) */
+
+
+
+#dress-code .dc-titulo {
+    margin: 0 0 8px;
+    padding: 0 0 0 0.12em;
+    font-family: var(--gt-display);
+    font-size: 25px;
+    font-weight: 500;
+    line-height: 1.3;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--gt-titulo);
+    -webkit-text-wrap: balance;
+    text-wrap: balance;
+}
+
+#dress-code .dc-subtitulo {
+    margin: 0 0 22px;
+    padding: 0;
+    font-family: var(--gt-serif);
+    font-size: 25px;
+    font-style: italic;
+    font-weight: 500;
+    line-height: 1.3;
+    color: var(--gt-lila);
+}
+
+#dress-code .dc-intro,
+#dress-code .dc-cierre,
+#dress-code .dc-leyenda {
+    padding: 0;
+    font-family: var(--gt-serif);
+    font-weight: 500;
+    color: var(--gt-texto);
+}
+
+#dress-code .dc-intro {
+    max-width: 31em;
+    margin: 0 auto 30px;
+    font-size: 19px;
+    line-height: 1.6;
+}
+
+/* --- Paleta de colores: medallones circulares -------------------------- */
+#dress-code .dc-paleta {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    max-width: 780px;
+    margin: 0 auto 12px;
+    padding: 0;
+    list-style: none;
+}
+
+#dress-code .dc-color {
+    flex: 0 0 25%;
+    max-width: 25%;
+    margin-bottom: 26px;
+    padding: 0 3px;
+    text-align: center;
+}
+
+#dress-code .dc-muestra {
+    position: relative;
+    display: block;
+    width: var(--dc-d);
+    height: var(--dc-d);
+    margin: 5px auto 14px;
+    border-radius: 50%;
+    background-color: var(--c);
+    background-image: radial-gradient(circle at 32% 26%, rgba(255, 255, 255, 0.11), rgba(255, 255, 255, 0) 56%);
+    box-shadow:
+        inset 0 0 8px rgba(0, 0, 0, 0.16),
+        0 0 0 4px var(--gt-fondo),
+        0 0 0 5px var(--gt-anillo);
+}
+
+#dress-code .dc-nombre {
+    display: block;
+    font-family: var(--gt-display);
+    font-size: 10px;
+    font-weight: 500;
+    line-height: 1.55;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(232, 220, 238, 0.8);
+    overflow-wrap: break-word;
+}
+
+/* "A evitar": muestras un poco más pequeñas y tachadas con una diagonal */
+#dress-code .dc-paleta--evitar .dc-muestra {
+    width: var(--dc-d-evitar);
+    height: var(--dc-d-evitar);
+    margin-top: 10px;
+    margin-bottom: 14px;
+}
+
+#dress-code .dc-paleta--evitar .dc-muestra::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    right: -4px;
+    left: -4px;
+    height: 2px;
+    margin-top: -1px;
+    border-radius: 2px;
+    background: #f4e6ee;
+    box-shadow: 0 0 0 1px rgba(8, 6, 10, 0.8);
+    transform: rotate(45deg);
+}
+
+/* Nueve muestras "a evitar": cuadrícula de 3 x 3 en el celular */
+#dress-code .dc-paleta--evitar .dc-color {
+    flex-basis: 33.3333%;
+    max-width: 33.3333%;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+/* --- Ellas / Ellos ----------------------------------------------------- */
+#dress-code .dc-vestuario {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 46px;
+    margin: 0 auto 40px;
+}
+
+#dress-code .dc-cuadro {
+    margin: 0;
+}
+
+#dress-code .dc-leyenda {
+    max-width: 300px;
+    margin: 0 auto;
+    font-size: 18px;
+    line-height: 1.55;
+}
+
+#dress-code .dc-cierre {
+    max-width: 30em;
+    margin: 0 auto;
+    font-size: 21px;
+    font-style: italic;
+    line-height: 1.55;
+    color: var(--gt-titulo);
+}
+
+/* ==========================================================================
+   Álbum
+   ========================================================================== */
+#album {
+    padding: 64px 0 72px;
+}
+
+#album .qr-marco {
+    display: inline-block;
+    margin: 8px auto 0;
+    padding: 14px;
+    background: #f3edf5;
+    box-shadow: 0 0 0 7px var(--gt-fondo), 0 0 0 8px var(--gt-linea);
+}
+
+#album .qr-marco::before,
+#album .qr-marco::after {
+    display: none;
+}
+
+#album .responsive-qr {
+    display: block;
+    width: 190px;
+    max-width: 100%;
+    height: auto;
+    margin: 0 auto;
+}
+
+/* ==========================================================================
+   Retratos de nuestro amor (cuadrícula uniforme: 2 por fila en el celular)
+   ========================================================================== */
+#eng-pics {
+    padding: 64px 0 72px;
+}
+
+#eng-pics .container-fluid {
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+#eng-pics .galeria {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-left: -9px;
+    margin-right: -9px;
+}
+
+#eng-pics .galeria::before,
+#eng-pics .galeria::after {
+    display: none;
+}
+
+#eng-pics .galeria > [class*="col-"] {
+    padding: 4px;
+}
+
+#eng-pics .img-wrap {
+    position: relative;
+    overflow: hidden;
+    border: 1px solid var(--gt-linea-suave);
+    border-radius: 2px;
+    background: #120e19;
+}
+
+#eng-pics .img-wrap::before {
+    content: "";
+    display: block;
+    padding-top: 100%; /* miniatura cuadrada; al tocarla se abre completa */
+}
+
+#eng-pics .img-wrap img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 30%;
+}
+
+/* ==========================================================================
+   Lugar y cómo llegar
+   ========================================================================== */
+
+/* ==========================================================================
+   Regalos
+   ========================================================================== */
+#gifts {
+    padding: 64px 0 72px;
+}
+
+#gifts .regalos {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 40px;
+    max-width: 900px;
+    margin: 40px auto 0;
+}
+
+#gifts .regalo {
+    max-width: none;
+    margin: 0;
+    padding: 44px 22px 36px;
+    min-height: 140px;
+}
+
+#gifts .regalo-titulo {
+    margin: 0 0 16px;
+    padding: 0 0 0 0.16em;
+    font-family: var(--gt-display);
+    font-size: 15px;
+    font-weight: 500;
+    line-height: 1.5;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--gt-titulo);
+    -webkit-text-wrap: balance;
+    text-wrap: balance;
+}
+
+#gifts .regalo .orn-estrella {
+    display: block;
+    margin: 0 auto 14px;
+}
+
+#gifts .regalo-dato {
+    margin: 0 0 10px;
+    padding: 0;
+    font-family: var(--gt-serif);
+    font-size: 19px;
+    font-weight: 500;
+    line-height: 1.5;
+    color: var(--gt-texto);
+}
+
+#gifts .regalo-boton {
+    display: inline-block;
+    margin-top: 6px;
+    padding: 10px 26px;
+    border: 1px solid var(--gt-oro);
+    border-radius: 2px;
+    font-family: var(--gt-display);
+    font-size: 12px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gt-oro);
+}
+
+#gifts .regalo-boton:hover,
+#gifts .regalo-boton:focus {
+    background: var(--gt-oro);
+    color: #0a080f;
+}
+
+/* ==========================================================================
+   Confirmar asistencia
+   ========================================================================== */
+section.rsvp {
+    --gt-fondo: #120e19;
+    padding: 72px 0 72px;
+}
+
+#rsvp .rsvp-form {
+    margin-top: 6px;
+}
+
+#rsvp .rsvp-form .form-input-group {
+    border: 1px solid var(--gt-linea-suave);
+    border-radius: 2px;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+#rsvp .rsvp-form .form-input-group:focus-within {
+    border-color: var(--gt-oro);
+    box-shadow: 0 0 0 3px rgba(198, 151, 58, 0.18);
+}
+
+/* 18px evita que el iPhone haga zoom al tocar un campo */
+#rsvp .rsvp-form .form-input-group input {
+    font-family: var(--gt-serif);
+    font-size: 18px;
+    font-weight: 500;
+    color: var(--gt-titulo);
+    outline: none;
+}
+
+@media (min-width: 768px) {
+    #rsvp .rsvp-form .form-input-group input {
+        padding-left: 58px;
+        font-size: 17px;
+    }
+}
+
+#rsvp .rsvp-form .form-input-group input::-webkit-input-placeholder {
+    color: rgba(200, 185, 215, 0.6);
+}
+
+#rsvp .rsvp-form .form-input-group input::-moz-placeholder {
+    color: rgba(200, 185, 215, 0.6);
+    opacity: 1;
+}
+
+#rsvp .rsvp-form .form-input-group input::placeholder {
+    color: rgba(200, 185, 215, 0.6);
+}
+
+#rsvp .rsvp-form .rsvp-btn {
+    margin-top: 6px;
+    border-radius: 2px;
+    font-family: var(--gt-display);
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    transition: background-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+#rsvp .rsvp-form .rsvp-btn:hover,
+#rsvp .rsvp-form .rsvp-btn:focus {
+    background: #e0b05c;
+    box-shadow: 0 0 22px rgba(198, 151, 58, 0.28);
+}
+
+#rsvp .rsvp-cierre {
+    margin-top: 56px;
+}
+
+#rsvp .rsvp-cierre .orn-divisor {
+    max-width: 360px;
+    margin-top: 0;
+    margin-bottom: 26px;
+}
+
+#rsvp-modal .modal-content {
+    border: 1px solid var(--gt-linea);
+    border-radius: 0;
+}
+
+#rsvp-modal .modal-body h3 {
+    font-family: var(--gt-display);
+    font-size: 22px;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+}
+
+/* Mensajes que muestra el formulario (alertas de Bootstrap) en tono oscuro */
+#alert-wrapper .alert {
+    margin: 0 0 14px;
+    padding: 12px 16px;
+    border: 1px solid var(--gt-linea-suave);
+    border-left-width: 3px;
+    border-radius: 2px;
+    background: rgba(255, 255, 255, 0.03);
+    font-family: var(--gt-serif);
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 1.4;
+    text-align: left;
+    color: var(--gt-texto);
+}
+
+#alert-wrapper .alert-success { border-left-color: #5f9a63; }
+#alert-wrapper .alert-danger { border-left-color: #b3374f; }
+#alert-wrapper .alert-warning { border-left-color: var(--gt-oro); }
+#alert-wrapper .alert-info { border-left-color: var(--gt-lila); }
+
+#alert-wrapper .alert .close {
+    color: var(--gt-titulo);
+    opacity: 0.6;
+}
+
+/* ==========================================================================
+   Pie de página
+   ========================================================================== */
+footer .content p {
+    font-family: var(--gt-serif);
+    font-size: 19px;
+    font-style: italic;
+    font-weight: 500;
+}
+
+/* ==========================================================================
+   Teléfonos
+   ========================================================================== */
+@media (max-width: 991px) {
+    #events .leftcol,
+    #events .rightcol {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+
+    #events .leftcol {
+        margin-bottom: 0;
+    }
+}
+
+@media (max-width: 767px) {
+    #invitation .container,
+    #intro .container,
+    #events .container,
+    #dress-code .container,
+    #album .container,
+    #video-bg .container,
+    #rsvp .container {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+    #gifts .container {
+        padding-left: 24px;
+        padding-right: 24px;
+    }
+
+    #gifts .regalo {
+        padding-left: 14px;
+        padding-right: 14px;
+    }
+}
+
+@media (max-width: 350px) {
+    #dress-code .dc-color {
+        flex-basis: 33.3333%;
+        max-width: 33.3333%;
+    }
+
+    .orn-rotulo {
+        font-size: 11px;
+        letter-spacing: 0.16em;
+    }
+
+    .orn-rotulo-texto {
+        padding-left: 0.16em;
+    }
+
+    .orn-rotulo > span {
+        margin-left: 4px;
+        margin-right: 4px;
+    }
+
+
+    #events .ev-item h5 {
+        font-size: 12.5px;
+        letter-spacing: 0.1em;
+    }
+}
+
+/* ==========================================================================
+   Tablet
+   ========================================================================== */
+@media (min-width: 768px) {
+    .sec-titulo {
+        font-size: 34px;
+    }
+
+    .sec-texto {
+        font-size: 22px;
+    }
+
+    .sec-sub {
+        font-size: 28px;
+    }
+
+    .sec-cierre {
+        font-size: 24px;
+    }
+
+    .orn-rotulo {
+        font-size: 15px;
+    }
+
+    .orn-rotulo > span {
+        margin-left: 8px;
+        margin-right: 8px;
+    }
+
+    #invitation {
+        padding: 88px 0 56px;
+    }
+
+    #invitation .inv-titulo {
+        font-size: 64px;
+    }
+
+    #invitation .inv-texto {
+        font-size: 28px;
+    }
+
+    #intro {
+        padding: 84px 0 88px;
+    }
+
+    #intro .hist-texto {
+        font-size: 22px;
+    }
+
+    #events {
+        padding: 80px 0 88px;
+    }
+
+    #events .ev-item {
+        padding: 15px 0;
+    }
+
+    #events .ev-item .time {
+        font-size: 22px;
+    }
+
+    #album,
+    #eng-pics,
+    #gifts {
+        padding-top: 84px;
+        padding-bottom: 88px;
+    }
+
+    #album .responsive-qr {
+        width: 220px;
+    }
+
+
+    #gifts .regalos {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    #gifts .regalo-dato {
+        font-size: 20px;
+    }
+
+    section.rsvp {
+        padding: 88px 0 88px;
+    }
+
+    /* Código de vestimenta */
+    #dress-code {
+        --dc-d: 72px;
+        --dc-d-evitar: 58px;
+        padding: 80px 0 88px;
+    }
+
+    #dress-code .marco {
+        padding: 64px 56px 60px;
+    }
+
+    #dress-code .orn-cielo {
+        max-width: 320px;
+        margin-bottom: 32px;
+    }
+
+
+
+
+    #dress-code .dc-titulo {
+        margin-bottom: 12px;
+        font-size: 32px;
+    }
+
+    #dress-code .dc-subtitulo {
+        margin-bottom: 26px;
+        font-size: 30px;
+    }
+
+    #dress-code .dc-intro {
+        max-width: 25em;
+        margin-bottom: 38px;
+        font-size: 21px;
+    }
+
+    #dress-code .orn-divisor {
+        margin-bottom: 42px;
+    }
+
+    #dress-code .orn-rotulo {
+        margin-bottom: 34px;
+    }
+
+    #dress-code .dc-color {
+        flex-basis: 16.6667%;
+        max-width: 16.6667%;
+        margin-bottom: 30px;
+        padding: 0 8px;
+    }
+
+    #dress-code .dc-paleta--evitar .dc-color {
+        flex-basis: 20%;
+        max-width: 20%;
+        padding-left: 8px;
+        padding-right: 8px;
+    }
+
+    #dress-code .dc-nombre {
+        font-size: 11px;
+    }
+
+    #dress-code .dc-paleta {
+        margin-bottom: 20px;
+    }
+
+    #dress-code .dc-vestuario {
+        grid-template-columns: 1fr 1fr;
+        gap: 56px;
+        margin-bottom: 48px;
+    }
+
+    #dress-code .dc-leyenda {
+        font-size: 19px;
+    }
+
+    #dress-code .dc-cierre {
+        font-size: 24px;
+    }
+}
+
+/* ==========================================================================
+   Escritorio
+   ========================================================================== */
+@media (min-width: 992px) {
+    #dress-code .dc-titulo {
+        font-size: 40px;
+    }
+
+
+
+
+    #dress-code .dc-intro {
+        max-width: 27em;
+        font-size: 22px;
+    }
+}
+
+/* ==========================================================================
+   Rosas grabadas y encabezados con rosas
+   La rosa de la DERECHA es la original; la de la IZQUIERDA es su reflejo, así
+   las dos "miran" hacia afuera. Tamaños y separaciones: variables --rosa-* y --cab-*.
+   ========================================================================== */
+.rosa {
+    position: absolute;
+    width: var(--rosa-w);
+    height: var(--rosa-h);
+    fill: var(--gt-vino);
+    pointer-events: none;
+    -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 52%, transparent 100%);
+    mask-image: linear-gradient(to bottom, #000 0%, #000 52%, transparent 100%);
+}
+
+.rosa--izq {
+    left: var(--rosa-x);
+    transform: scaleX(-1);
+}
+
+.rosa--der {
+    right: var(--rosa-x);
+}
+
+.marco > .rosa {
+    top: 44px;
+}
+
+/* En "Código de vestimenta" las rosas arrancan a la altura de la luna */
+#dress-code .marco > .rosa {
+    top: 94px;
+}
+
+/* Encabezado con rosas sin marco (Retratos y Regalos) */
+.cab-rosas {
+    position: relative;
+    max-width: 900px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.cab-rosas > .rosa {
+    top: 0;
+}
+
+.cab-rosas--corta {
+    max-width: 520px;
+}
+
+/* Deja libre el espacio de las rosas a los lados del título */
+.marco-cab {
+    min-height: var(--cab-min);
+    margin-bottom: 24px;
+    padding: var(--cab-top) var(--cab-pad-marco) 0;
+}
+
+.cab-rosas .marco-cab {
+    margin-bottom: 36px;
+    padding-left: var(--cab-pad-libre);
+    padding-right: var(--cab-pad-libre);
+}
+
+.marco-cab .sec-cab {
+    margin-bottom: 0;
+}
+
+.marco-cab .sec-titulo {
+    font-size: 21px;
+}
+
+.marco-cab .orn-divisor {
+    max-width: 100%;
+}
+
+/* ==========================================================================
+   Lugar (título "Lugar"; nombre y dirección como subtítulo) y mapa
+   ========================================================================== */
+#video-bg {
+    padding: 64px 0 72px;
+}
+
+#video-bg .sec-sub {
+    margin: 10px 0 0;
+    font-size: 25px;
+}
+
+#video-bg .sec-dir {
+    margin: 6px 0 0;
+    padding: 0;
+    font-family: var(--gt-serif);
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 1.45;
+    color: rgba(232, 220, 238, 0.78);
+    -webkit-text-wrap: balance;
+    text-wrap: balance;
+}
+
+#map {
+    padding-top: 14px;
+}
+
+#map .orn-rotulo {
+    max-width: 560px;
+    margin: 6px auto 28px;
+}
+
+#map .foto-marco {
+    margin: 0 auto;
+}
+
+#map iframe {
+    height: 340px;
+    /* mapa en "modo noche" para que combine con el sitio; quita esta línea para verlo con sus colores normales */
+    filter: invert(92%) hue-rotate(180deg) saturate(0.75) contrast(0.92);
+}
+
+/* Confirmar asistencia dentro del marco */
+#rsvp .rsvp-form {
+    max-width: 560px;
+    margin: 6px auto 0;
+}
+
+#rsvp .rsvp-cierre {
+    margin-top: 44px;
+}
+
+/* ==========================================================================
+   Tamaños por pantalla (rosas y encabezados)
+   ========================================================================== */
+@media (max-width: 350px) {
+    :root {
+        --rosa-w: 36px;
+        --rosa-h: 87px;
+        --cab-pad-marco: 33px;
+        --cab-pad-libre: 52px;
+        --cab-min: 67px;
+    }
+
+    .marco-cab .sec-titulo {
+        font-size: 17px;
+    }
+}
+
+@media (min-width: 351px) and (max-width: 380px) {
+    .marco-cab .sec-titulo {
+        font-size: 19px;
+    }
+}
+
+@media (min-width: 768px) {
+    :root {
+        --rosa-w: 64px;
+        --rosa-h: 155px;
+        --rosa-x: 22px;
+        --cab-pad-marco: 39px;
+        --cab-pad-libre: 96px;
+        --cab-min: 135px;
+        --cab-top: 8px;
+    }
+
+    .marco {
+        padding: 64px 56px 60px;
+    }
+
+    .marco > .rosa {
+        top: 60px;
+    }
+
+    #dress-code .marco > .rosa {
+        top: 60px;
+    }
+
+    .marco-cab .sec-titulo {
+        font-size: 32px;
+    }
+
+    #video-bg {
+        padding: 84px 0 88px;
+    }
+
+    #video-bg .sec-sub {
+        font-size: 30px;
+    }
+
+    #video-bg .sec-dir {
+        font-size: 20px;
+    }
+
+    #map iframe {
+        height: 460px;
+    }
+
+    #rsvp .rsvp-cierre {
+        margin-top: 52px;
+    }
+}
+
+@media (min-width: 992px) {
+    :root {
+        --rosa-w: 92px;
+        --rosa-h: 223px;
+        --rosa-x: 26px;
+        --cab-pad-marco: 76px;
+        --cab-pad-libre: 132px;
+        --cab-min: 175px;
+        --cab-top: 24px;
+    }
+
+    .marco > .rosa {
+        top: 62px;
+    }
+
+    #dress-code .marco > .rosa {
+        top: 66px;
+    }
+
+    .marco-cab .sec-titulo {
+        font-size: 34px;
+    }
+
+    #invitation .inv-titulo {
+        font-size: 78px;
+    }
+}
+
+/* ==========================================================================
+   Menú del celular y la tablet (botón de hamburguesa + menú a pantalla completa)
+   A partir de 992 px el menú va en línea y el botón se oculta.
+   ========================================================================== */
+.navicon {
+    display: none;
+}
+
+body.menu-abierto {
+    overflow: hidden;
+}
+
+@media screen and (max-width: 991px) {
+    /* Con "backdrop-filter" el menú fijo se encogía al tamaño de la barra al hacer scroll */
+    .navigation,
+    .navigation.fixed,
+    .fixed,
+    header,
+    header .header-content {
+        -webkit-backdrop-filter: none;
+        backdrop-filter: none;
+    }
+
+    .fixed {
+        background-color: rgba(12, 8, 20, 0.97);
+    }
+
+    /* Botón: área táctil de 44 px, tres rayas que se vuelven una X al abrir */
+    header .navicon {
+        display: block;
+        position: absolute;
+        top: 50%;
+        right: -6px;
+        z-index: 100000;
+        margin-top: -22px;
+    }
+
+    header .nav-toggle {
+        display: block;
+        position: relative;
+        width: 44px;
+        height: 44px;
+        -webkit-tap-highlight-color: transparent;
+    }
+
+    header .nav-toggle:focus {
+        outline: 0;
+    }
+
+    header .nav-toggle:focus-visible {
+        outline: 2px solid var(--gt-oro);
+        outline-offset: 2px;
+        border-radius: 4px;
+    }
+
+    header .nav-toggle span,
+    header .nav-toggle span::before,
+    header .nav-toggle span::after {
+        display: block;
+        position: absolute;
+        width: 24px;
+        height: 2px;
+        border-radius: 1px;
+        background: var(--gt-titulo);
+        transition: transform 0.3s ease, top 0.3s ease, background-color 0.3s ease;
+    }
+
+    header .nav-toggle span {
+        top: 21px;
+        left: 10px;
+    }
+
+    header .nav-toggle span::before,
+    header .nav-toggle span::after {
+        content: "";
+        left: 0;
+    }
+
+    header .nav-toggle span::before {
+        top: -8px;
+    }
+
+    header .nav-toggle span::after {
+        top: 8px;
+    }
+
+    header .nav-toggle:hover span,
+    header .nav-toggle:hover span::before,
+    header .nav-toggle:hover span::after {
+        background-color: var(--gt-oro);
+    }
+
+    header .nav-toggle.active span {
+        background: transparent;
+    }
+
+    header .nav-toggle.active span::before {
+        top: 0;
+        transform: rotate(45deg);
+    }
+
+    header .nav-toggle.active span::after {
+        top: 0;
+        transform: rotate(-45deg);
+    }
+
+    /* La regla que faltaba: menú visible al abrirse */
+    header .header-nav {
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+        background-color: #0a080f;
+        background-image: radial-gradient(ellipse at 50% 35%, rgba(96, 44, 74, 0.22), rgba(10, 8, 15, 0) 65%);
+    }
+
+    header .header-nav.open {
+        visibility: visible;
+        opacity: 1;
+        -webkit-transition: opacity 0.5s;
+        transition: opacity 0.5s;
+    }
+
+    /* Enlaces con la tipografía del resto del sitio */
+    header nav ul.primary-nav li a,
+    header nav ul.member-actions li a {
+        display: inline-block;
+        padding: 8px 14px;
+        font-family: var(--gt-display);
+        font-size: 16px;
+        font-weight: 500;
+        letter-spacing: 0.18em;
+        line-height: 1.4;
+        text-transform: uppercase;
+        color: var(--gt-titulo);
+    }
+
+    /* una regla antigua quita el relleno derecho al último elemento y lo descentraba */
+    header nav ul.primary-nav li:last-child a {
+        padding-right: 14px;
+    }
+
+    header nav ul.primary-nav li a:hover,
+    header nav ul.primary-nav li a:focus,
+    header nav ul.member-actions li a.login:hover,
+    header nav ul.member-actions li a.login:focus {
+        color: var(--gt-oro);
+    }
+
+    header nav ul li {
+        margin-bottom: 14px;
+    }
+
+    header nav ul.member-actions {
+        margin-top: 26px;
+    }
+
+    header nav ul.member-actions li a.btn-white {
+        padding: 12px 30px;
+        font-size: 14px;
+        letter-spacing: 0.2em;
+        border-color: var(--gt-oro);
+        color: var(--gt-oro);
+    }
+
+    header nav ul.member-actions li a.btn-white:hover,
+    header nav ul.member-actions li a.btn-white:focus {
+        background-color: var(--gt-oro);
+        color: #0a080f;
+    }
+
+    /* Adorno arriba y abajo de la lista */
+    header nav::before,
+    header nav::after {
+        content: "";
+        display: block;
+        width: 150px;
+        height: 14px;
+        margin: 0 auto;
+        background:
+            var(--gt-estrella) center / 14px 14px no-repeat,
+            linear-gradient(to right, transparent, var(--gt-linea)) left center / 56px 1px no-repeat,
+            linear-gradient(to left, transparent, var(--gt-linea)) right center / 56px 1px no-repeat;
+    }
+
+    header nav::before {
+        margin-bottom: 34px;
+    }
+
+    header nav::after {
+        margin-top: 26px;
+    }
+
+    /* Aparición escalonada de las 8 opciones (queries.css solo cubre las primeras 6) */
+    header nav ul.primary-nav li:nth-child(5) { transition-delay: 0.25s; }
+    header nav ul.primary-nav li:nth-child(6) { transition-delay: 0.3s; }
+    header nav ul.member-actions li:nth-child(1) { transition-delay: 0.35s; }
+    header nav ul.member-actions li:nth-child(2) { transition-delay: 0.4s; }
+}
+
+/* Celulares en horizontal: menú desplazable y más compacto */
+@media screen and (max-width: 991px) and (max-height: 560px) {
+    header nav {
+        top: 0;
+        padding: 70px 0 24px;
+        transform: none;
+    }
+
+    header nav::before,
+    header nav::after {
+        display: none;
+    }
+
+    header nav ul li {
+        margin-bottom: 6px;
+    }
+
+    header nav ul.member-actions {
+        margin-top: 14px;
+    }
 }
